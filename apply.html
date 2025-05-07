@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermost Ventures | MBBS Overseas Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a3a8a 0%, #0284c7 100%);
+        }
+        .form-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        .input-focus:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .error-text {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .success-banner {
+            background-color: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            display: inline-block;
+            margin-right: 8px;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header Section -->
+    <div class="hero-gradient text-white py-8 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex items-center justify-between">
+                <div>
+                    <div class="flex items-center">
+                        <i class="fas fa-globe-americas text-3xl mr-3"></i>
+                        <h1 class="text-3xl font-bold">Intermost Ventures</h1>
+                    </div>
+                    <p class="mt-2 opacity-90">MBBS Overseas Education Consultation</p>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <span>+91 9876543210</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>mbbs@intermost.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto max-w-6xl px-4 py-8 -mt-8">
+        <!-- Success Message -->
+        <div class="success-banner" id="successMessage">
+            <div class="flex items-center">
+                <i class="fas fa-check-circle mr-2 text-xl"></i>
+                <span>Your inquiry has been submitted successfully! Our counselor will contact you within 24 hours.</span>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="bg-white rounded-xl form-shadow overflow-hidden">
+            <!-- Form Header -->
+            <div class="hero-gradient text-white py-4 px-6">
+                <h2 class="text-xl font-semibold">MBBS Overseas Education Inquiry</h2>
+                <p class="text-sm opacity-90 mt-1">Fill in your details to get personalized consultation</p>
+            </div>
+
+            <form id="mbbsOverseasForm" class="p-6 space-y-6">
+                <!-- Personal Information -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name*</label>
+                        <input type="text" id="fullName" name="fullName" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="Enter your full name">
+                        <div class="error-text" id="nameError"></div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="example@email.com">
+                        <div class="error-text" id="emailError"></div>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number*</label>
+                        <div class="flex">
+                            <select id="countryCode" name="countryCode" class="px-3 py-2 rounded-l-lg border input-focus focus:outline-none bg-gray-100">
+                                <option value="+91">+91 (IND)</option>
+                                <option value="+1">+1 (USA)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+86">+86 (CHN)</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded-r-lg border input-focus focus:outline-none" placeholder="9876543210">
+                        </div>
+                        <div class="error-text" id="phoneError"></div>
+                    </div>
+
+                    <div>
+                        <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth*</label>
+                        <input type="date" id="dob" name="dob" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                        <div class="error-text" id="dobError"></div>
+                    </div>
+
+                    <div>
+                        <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender*</label>
+                        <select id="gender" name="gender" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-text" id="genderError"></div>
+                    </div>
+
+                    <div>
+                        <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State (India)*</label>
+                        <select id="state" name="state" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select State</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="tamilnadu">Tamil Nadu</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-text" id="stateError"></div>
+                    </div>
+                </div>
+
+                <!-- Academic Information -->
+                <div class="hero-gradient text-white py-4 px-6 -mx-6">
+                    <h2 class="text-xl font-semibold">Academic Information</h2>
+                    <p class="text-sm opacity-90 mt-1">Details about your educational background</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    <div>
+                        <label for="qualification" class="block text-sm font-medium text-gray-700 mb-1">Highest Qualification*</label>
+                        <select id="qualification" name="qualification" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select Qualification</option>
+                            <option value="12th">12th Standard</option>
+                            <option value="bachelor">Bachelor's Degree</option>
+                            <option value="master">Master's Degree</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-text" id="qualificationError"></div>
+                    </div>
+
+                    <div>
+                        <label for="board" class="block text-sm font-medium text-gray-700 mb-1">Board/University*</label>
+                        <input type="text" id="board" name="board" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="Your board/university">
+                        <div class="error-text" id="boardError"></div>
+                    </div>
+
+                    <div>
+                        <label for="year" class="block text-sm font-medium text-gray-700 mb-1">Year of Passing*</label>
+                        <input type="number" id="year" name="year" min="1900" max="2024" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="2023">
+                        <div class="error-text" id="yearError"></div>
+                    </div>
+
+                    <div>
+                        <label for="percentage" class="block text-sm font-medium text-gray-700 mb-1">Percentage/GPA*</label>
+                        <input type="text" id="percentage" name="percentage" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="e.g. 85% or 3.5">
+                        <div class="error-text" id="percentageError"></div>
+                    </div>
+
+                    <div>
+                        <label for="neetScore" class="block text-sm font-medium text-gray-700 mb-1">NEET Score (if applicable)</label>
+                        <input type="text" id="neetScore" name="neetScore" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="Your NEET score">
+                    </div>
+
+                    <div>
+                        <label for="neetRank" class="block text-sm font-medium text-gray-700 mb-1">NEET Rank (if applicable)</label>
+                        <input type="text" id="neetRank" name="neetRank" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="Your NEET rank">
+                    </div>
+                </div>
+
+                <!-- Study Preferences -->
+                <div class="hero-gradient text-white py-4 px-6 -mx-6">
+                    <h2 class="text-xl font-semibold">Study Preferences</h2>
+                    <p class="text-sm opacity-90 mt-1">Tell us about your MBBS abroad preferences</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    <div>
+                        <label for="preferredCountries" class="block text-sm font-medium text-gray-700 mb-1">Preferred Countries*</label>
+                        <select id="preferredCountries" name="preferredCountries" multiple class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none h-[42px]">
+                            <option value="russia">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/ru.png')"></span>Russia
+                            </option>
+                            <option value="china">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/cn.png')"></span>China
+                            </option>
+                            <option value="ukraine">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/ua.png')"></span>Ukraine
+                            </option>
+                            <option value="philippines">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/ph.png')"></span>Philippines
+                            </option>
+                            <option value="georgia">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/ge.png')"></span>Georgia
+                            </option>
+                            <option value="kazakhstan">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/kz.png')"></span>Kazakhstan
+                            </option>
+                            <option value="bangladesh">
+                                <span class="country-flag" style="background-image: url('https://flagcdn.com/16x12/bd.png')"></span>Bangladesh
+                            </option>
+                        </select>
+                        <div class="error-text" id="countriesError"></div>
+                    </div>
+
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Annual Budget (INR)*</label>
+                        <select id="budget" name="budget" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select Budget Range</option>
+                            <option value="2-4">2-4 Lakhs</option>
+                            <option value="4-6">4-6 Lakhs</option>
+                            <option value="6-8">6-8 Lakhs</option>
+                            <option value="8-10">8-10 Lakhs</option>
+                            <option value="10+">10+ Lakhs</option>
+                        </select>
+                        <div class="error-text" id="budgetError"></div>
+                    </div>
+
+                    <div>
+                        <label for="intake" class="block text-sm font-medium text-gray-700 mb-1">Preferred Intake*</label>
+                        <select id="intake" name="intake" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select Intake</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                        <div class="error-text" id="intakeError"></div>
+                    </div>
+
+                    <div>
+                        <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Preferred Duration*</label>
+                        <select id="duration" name="duration" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select Duration</option>
+                            <option value="5">5 Years</option>
+                            <option value="6">6 Years</option>
+                        </select>
+                        <div class="error-text" id="durationError"></div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="hero-gradient text-white py-4 px-6 -mx-6">
+                    <h2 class="text-xl font-semibold">Additional Information</h2>
+                    <p class="text-sm opacity-90 mt-1">Other relevant details</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 pt-2">
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Full Address*</label>
+                        <textarea id="address" name="address" rows="3" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="Your complete address"></textarea>
+                        <div class="error-text" id="addressError"></div>
+                    </div>
+
+                    <div>
+                        <label for="source" class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?*</label>
+                        <select id="source" name="source" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none">
+                            <option value="">Select Option</option>
+                            <option value="internet">Internet Search</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend/Family</option>
+                            <option value="newspaper">Newspaper</option>
+                            <option value="seminar">Education Seminar</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-text" id="sourceError"></div>
+                    </div>
+
+                    <div>
+                        <label for="questions" class="block text-sm font-medium text-gray-700 mb-1">Any specific questions?</label>
+                        <textarea id="questions" name="questions" rows="3" class="w-full px-4 py-2 rounded-lg border input-focus focus:outline-none" placeholder="Your questions or concerns"></textarea>
+                    </div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="flex items-start">
+                    <input type="checkbox" id="agree" name="agree" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1">
+                    <label for="agree" class="ml-2 block text-sm text-gray-700">
+                        I hereby declare that all the information provided is correct to the best of my knowledge and I authorize Intermost Ventures to contact me regarding MBBS overseas education opportunities.*
+                    </label>
+                </div>
+                <div class="error-text" id="agreeError"></div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" class="hero-gradient text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition duration-300 w-full md:w-auto">
+                        <i class="fas fa-paper-plane mr-2"></i> Submit Inquiry
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center text-gray-600 text-sm">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-blue-600 hover:underline"><i class="fas fa-globe mr-1"></i> www.intermost.com</a>
+                <a href="mailto:mbbs@intermost.com" class="text-blue-600 hover:underline"><i class="fas fa-envelope mr-1"></i> mbbs@intermost.com</a>
+                <a href="tel:+919876543210" class="text-blue-600 hover:underline"><i class="fas fa-phone-alt mr-1"></i> +91 9876543210</a>
+            </div>
+            <p class="mt-2">© 2024 Intermost Ventures Study Abroad. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-pink-600 hover:text-pink-800"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-blue-700 hover:text-blue-900"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-red-600 hover:text-red-800"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('mbbsOverseasForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset all error messages
+            document.querySelectorAll('.error-text').forEach(el => el.textContent = '');
+            
+            // Validate form fields
+            let isValid = true;
+            
+            // Personal Information Validation
+            if (!document.getElementById('fullName').value.trim()) {
+                document.getElementById('nameError').textContent = 'Full name is required';
+                isValid = false;
+            }
+            
+            const email = document.getElementById('email').value.trim();
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            const phone = document.getElementById('phone').value.trim();
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Phone number is required';
+                isValid = false;
+            } else if (!/^\d{10}$/.test(phone)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid 10-digit phone number';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('dob').value) {
+                document.getElementById('dobError').textContent = 'Date of birth is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('gender').value) {
+                document.getElementById('genderError').textContent = 'Gender is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('state').value) {
+                document.getElementById('stateError').textContent = 'State is required';
+                isValid = false;
+            }
+            
+            // Academic Information Validation
+            if (!document.getElementById('qualification').value) {
+                document.getElementById('qualificationError').textContent = 'Qualification is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('board').value.trim()) {
+                document.getElementById('boardError').textContent = 'Board/University is required';
+                isValid = false;
+            }
+            
+            const year = document.getElementById('year').value.trim();
+            if (!year) {
+                document.getElementById('yearError').textContent = 'Year of passing is required';
+                isValid = false;
+            } else if (year < 1900 || year > new Date().getFullYear()) {
+                document.getElementById('yearError').textContent = 'Please enter a valid year';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('percentage').value.trim()) {
+                document.getElementById('percentageError').textContent = 'Percentage/GPA is required';
+                isValid = false;
+            }
+            
+            // Study Preferences Validation
+            const selectedCountries = Array.from(document.getElementById('preferredCountries').selectedOptions).map(option => option.value);
+            if (selectedCountries.length === 0) {
+                document.getElementById('countriesError').textContent = 'Please select at least one preferred country';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('budget').value) {
+                document.getElementById('budgetError').textContent = 'Budget range is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('intake').value) {
+                document.getElementById('intakeError').textContent = 'Preferred intake is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('duration').value) {
+                document.getElementById('durationError').textContent = 'Preferred duration is required';
+                isValid = false;
+            }
+            
+            // Additional Information Validation
+            if (!document.getElementById('address').value.trim()) {
+                document.getElementById('addressError').textContent = 'Address is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('source').value) {
+                document.getElementById('sourceError').textContent = 'This information is required';
+                isValid = false;
+            }
+            
+            if (!document.getElementById('agree').checked) {
+                document.getElementById('agreeError').textContent = 'You must agree to the declaration';
+                isValid = false;
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                document.getElementById('successMessage').style.display = 'flex';
+                document.getElementById('mbbsOverseasForm').reset();
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }
+        });
+        
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
+        
+        // Initialize multi-select for countries
+        document.getElementById('preferredCountries').addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            
+            const option = e.target;
+            if (option.tagName === 'OPTION') {
+                option.selected = !option.selected;
+                
+                // Update display to show selected count
+                const selectedCount = Array.from(this.selectedOptions).length;
+                if (selectedCount > 0) {
+                    this.style.height = 'auto';
+                } else {
+                    this.style.height = '42px';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
