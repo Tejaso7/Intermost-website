@@ -3,17 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intermost Study Abroad - MBBS Overseas Education</title>
+    <title>Intermost Ventures Study Abroad - MBBS Overseas Education</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a5632',
-                        secondary: '#d4af37',
-                        accent: '#2e7d32',
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#2563eb',
+                        darkblue: '#1e3a8a',
+                        lightblue: '#93c5fd'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'heartbeat': 'heartbeat 1.5s ease infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        heartbeat: {
+                            '0%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.1)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.1)' },
+                            '70%': { transform: 'scale(1)' }
+                        }
                     }
                 }
             }
@@ -21,38 +53,69 @@
     </script>
     <style>
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1581093450021-4a7360e0fd2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.85)), 
+                              url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .doctor-bg {
+            background-image: linear-gradient(rgba(30, 64, 175, 0.9), rgba(30, 58, 138, 0.9)), 
+                              url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
         }
         .country-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         .testimonial-card:hover {
             transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.2);
         }
         .floating-btn {
             animation: float 3s ease-in-out infinite;
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
         .smooth-scroll {
             scroll-behavior: smooth;
         }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg, #3b82f6, #1e40af);
+        }
+        .stethoscope {
+            position: absolute;
+            animation: wave 2s linear infinite;
+            transform-origin: 70% 70%;
+        }
+        .pulse-dot {
+            animation: pulse-slow 2s infinite;
+        }
+        .doctor-icon {
+            transition: all 0.3s ease;
+        }
+        .doctor-icon:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 5px 15px rgba(59, 130, 246, 0.5));
+        }
+        .glow-card {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
     </style>
 </head>
-<body class="smooth-scroll font-sans">
+<body class="smooth-scroll font-sans bg-gray-50">
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919058501818" class="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg z-50 hover:bg-green-700 transition-all floating-btn">
+    <a href="https://wa.me/919058501818" class="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg z-50 hover:bg-green-700 transition-all floating-btn animate__animated animate__heartBeat animate__infinite animate__slower">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
     <!-- Floating Apply Now Button -->
-    <a href="#apply" class="fixed bottom-28 right-6 bg-secondary text-white p-4 rounded-full shadow-lg z-50 hover:bg-yellow-700 transition-all floating-btn">
+    <a href="#apply" class="fixed bottom-28 right-6 bg-secondary text-white p-4 rounded-full shadow-lg z-50 hover:bg-blue-700 transition-all floating-btn animate__animated animate__pulse animate__infinite animate__slower">
         <span class="font-bold">APPLY NOW</span>
     </a>
 
@@ -60,27 +123,30 @@
     <header class="sticky top-0 z-40 bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://via.placeholder.com/50x50" alt="Intermost Logo" class="h-12 mr-3">
+                <div class="relative">
+                    <img src=".images/logo/INTERMOST_finalised logo 10 Aug 2020-01.png" alt="Intermost Logo" class="h-12 mr-3">
+                    <i class="fas fa-stethoscope stethoscope text-secondary absolute -top-2 -right-2 text-xl"></i>
+                </div>
                 <div>
-                    <h1 class="text-xl font-bold text-primary">INTERMOST STUDY ABROAD</h1>
+                    <h1 class="text-xl font-bold text-primary">INTERMOST VENTURES STUDY ABROAD</h1>
                     <div class="flex flex-wrap gap-1 mt-1">
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">WHO</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">WFME</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">ECFMG</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">FAIMER</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">USMLE</span>
+                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">WHO</span>
+                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">WFME</span>
+                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">ECFMG</span>
+                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">FAIMER</span>
+                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">USMLE</span>
                     </div>
                 </div>
             </div>
             
             <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-primary hover:text-secondary font-medium">Home</a>
-                <a href="#about" class="text-primary hover:text-secondary font-medium">About Us</a>
-                <a href="#destinations" class="text-primary hover:text-secondary font-medium">MBBS Destinations</a>
-                <a href="#why-us" class="text-primary hover:text-secondary font-medium">Why Choose Us</a>
-                <a href="#testimonials" class="text-primary hover:text-secondary font-medium">Testimonials</a>
-                <a href="#blog" class="text-primary hover:text-secondary font-medium">Blog</a>
-                <a href="#contact" class="text-primary hover:text-secondary font-medium">Contact</a>
+                <a href="#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+                <a href="#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+                <a href="#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Destinations</a>
+                <a href="#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+                <a href="#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+                <a href="#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+                <a href="#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
             </nav>
             
             <button class="md:hidden text-primary">
@@ -91,25 +157,92 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-bg text-white py-20 md:py-32">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Aim for Excellence, The Way to Success</h1>
-            <p class="text-xl md:text-2xl mb-8">Admission open for world-class Medical Universities 2025–26</p>
-            <a href="#apply" class="bg-secondary hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all">
-                Apply Now
-            </a>
+        <div class="container mx-auto px-4 text-center animate__animated animate__fadeIn">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-center mb-6">
+                    <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                        <i class="fas fa-user-md text-4xl text-secondary animate__animated animate__pulse animate__infinite animate__slower"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Shape Your <span class="gradient-text">Medical Career</span> Globally</h1>
+                <p class="text-xl md:text-2xl mb-8">Admission open for world-class Medical Universities 2025–26</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#apply" class="bg-secondary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+                        Apply Now
+                    </a>
+                    <a href="#destinations" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105">
+                        Explore Programs
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Recognitions Section -->
-    <section class="bg-gray-100 py-12">
+    <section class="bg-white py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-primary mb-10">Recognized By</h2>
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-                <img src="https://via.placeholder.com/120x60?text=WHO" alt="WHO" class="h-16 object-contain">
-                <img src="https://via.placeholder.com/120x60?text=WFME" alt="WFME" class="h-16 object-contain">
-                <img src="https://via.placeholder.com/120x60?text=ECFMG" alt="ECFMG" class="h-16 object-contain">
-                <img src="https://via.placeholder.com/120x60?text=FAIMER" alt="FAIMER" class="h-16 object-contain">
-                <img src="https://via.placeholder.com/120x60?text=USMLE" alt="USMLE" class="h-16 object-contain">
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 animate__animated animate__fadeIn">
+                <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
+                    <img src="https://via.placeholder.com/120x60?text=WHO" alt="WHO" class="h-16 object-contain">
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
+                    <img src="https://via.placeholder.com/120x60?text=WFME" alt="WFME" class="h-16 object-contain">
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
+                    <img src="https://via.placeholder.com/120x60?text=ECFMG" alt="ECFMG" class="h-16 object-contain">
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
+                    <img src="https://via.placeholder.com/120x60?text=FAIMER" alt="FAIMER" class="h-16 object-contain">
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
+                    <img src="https://via.placeholder.com/120x60?text=USMLE" alt="USMLE" class="h-16 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Journey Section -->
+    <section class="doctor-bg text-white py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Your Journey to Becoming a Doctor</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary text-white rounded-full h-10 w-10 flex items-center justify-center mr-4 font-bold">1</div>
+                        <h3 class="text-xl font-semibold">Counseling & Selection</h3>
+                    </div>
+                    <p>Our expert counselors guide you in selecting the perfect medical university based on your academic profile, budget, and career aspirations.</p>
+                    <div class="mt-4 flex justify-center">
+                        <i class="fas fa-comments text-4xl text-lightblue opacity-70 doctor-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary text-white rounded-full h-10 w-10 flex items-center justify-center mr-4 font-bold">2</div>
+                        <h3 class="text-xl font-semibold">Admission Process</h3>
+                    </div>
+                    <p>We handle all documentation, university applications, and entrance procedures to ensure smooth admission to your chosen medical program.</p>
+                    <div class="mt-4 flex justify-center">
+                        <i class="fas fa-file-signature text-4xl text-lightblue opacity-70 doctor-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary text-white rounded-full h-10 w-10 flex items-center justify-center mr-4 font-bold">3</div>
+                        <h3 class="text-xl font-semibold">Clinical Excellence</h3>
+                    </div>
+                    <p>Gain hands-on experience with state-of-the-art facilities and expert faculty, preparing you for a successful medical career worldwide.</p>
+                    <div class="mt-4 flex justify-center">
+                        <i class="fas fa-heartbeat text-4xl text-lightblue opacity-70 doctor-icon animate-heartbeat"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -117,32 +250,35 @@
     <!-- About Us Section -->
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-primary mb-12">About Intermost Study Abroad</h2>
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">About Intermost Ventures</h2>
             
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Medical Students" class="rounded-lg shadow-lg w-full h-auto">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Medical Students" class="rounded-xl shadow-xl w-full h-auto">
+                    <div class="absolute -bottom-4 -right-4 bg-secondary text-white p-4 rounded-full shadow-lg animate__animated animate__pulse animate__infinite animate__slower">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
                 </div>
                 
                 <div class="md:w-1/2">
                     <h3 class="text-2xl font-semibold text-primary mb-4">Our Mission</h3>
                     <p class="text-gray-700 mb-6">
-                        Our company has been committed to excellence in medical education. Our mission is to inspire and empower students to achieve their full potential by providing access to world-class medical education at affordable costs.
+                        At Intermost Ventures, we're committed to transforming medical education by connecting aspiring doctors with world-class institutions. Our mission is to empower the next generation of healthcare professionals through accessible, high-quality global education.
                     </p>
                     
                     <h3 class="text-2xl font-semibold text-primary mb-4">Our Vision</h3>
                     <p class="text-gray-700 mb-6">
-                        To become the most trusted global education consultancy, bridging the gap between aspiring medical students and top-tier international medical universities.
+                        To be the premier gateway for medical education abroad, recognized for our integrity, expertise, and commitment to student success in the global healthcare community.
                     </p>
                     
                     <h3 class="text-2xl font-semibold text-primary mb-4">Global Presence</h3>
                     <p class="text-gray-700">
-                        With offices in UAE and India, we serve students across South Asia, Middle East, and Africa, helping them realize their dreams of becoming doctors.
+                        With strategic offices in UAE and India, we serve students across South Asia, Middle East, and Africa, providing end-to-end support for their medical education journey.
                     </p>
                     
-                    <div class="mt-8">
+                    <div class="mt-8 bg-blue-50 p-4 rounded-lg">
                         <h4 class="text-xl font-semibold text-primary mb-3">Organization Details</h4>
-                        <p class="text-gray-700"><strong>Intermost Study Abroad</strong></p>
+                        <p class="text-gray-700"><strong>Intermost Ventures Study Abroad</strong></p>
                         <p class="text-gray-700">Ekam Marketing and Innovation Solutions FZ-LLC, UAE</p>
                         <div class="mt-2">
                             <a href="https://www.intermost.eu" class="text-accent hover:underline">www.intermost.eu</a><br>
@@ -157,11 +293,14 @@
     <!-- MBBS Destinations Section -->
     <section id="destinations" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-primary mb-12">MBBS Destinations</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary mb-4">MBBS Destinations</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose from our carefully selected network of medical universities offering world-class education at affordable costs</p>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Vietnam Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden country-card transition-all duration-300">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden country-card transition-all duration-300 glow-card">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1528127269322-540a3e135b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Vietnam" class="w-full h-48 object-cover">
                         <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
@@ -186,12 +325,14 @@
                                 <li>Low Cost of Living</li>
                             </ul>
                         </div>
-                        <a href="#apply" class="block text-center bg-primary hover:bg-green-800 text-white py-2 px-4 rounded transition-all">Apply Now</a>
+                        <a href="#apply" class="block text-center bg-primary hover:bg-darkblue text-white py-2 px-4 rounded-lg transition-all transform hover:scale-105">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Russia Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden country-card transition-all duration-300">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden country-card transition-all duration-300 glow-card">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Russia" class="w-full h-48 object-cover">
                         <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
@@ -216,12 +357,14 @@
                                 <li>European Standard Education</li>
                             </ul>
                         </div>
-                        <a href="#apply" class="block text-center bg-primary hover:bg-green-800 text-white py-2 px-4 rounded transition-all">Apply Now</a>
+                        <a href="#apply" class="block text-center bg-primary hover:bg-darkblue text-white py-2 px-4 rounded-lg transition-all transform hover:scale-105">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Georgia Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden country-card transition-all duration-300">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden country-card transition-all duration-300 glow-card">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1559131397-f94da358a7b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Georgia" class="w-full h-48 object-cover">
                         <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
@@ -246,12 +389,14 @@
                                 <li>Safe Environment</li>
                             </ul>
                         </div>
-                        <a href="#apply" class="block text-center bg-primary hover:bg-green-800 text-white py-2 px-4 rounded transition-all">Apply Now</a>
+                        <a href="#apply" class="block text-center bg-primary hover:bg-darkblue text-white py-2 px-4 rounded-lg transition-all transform hover:scale-105">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Uzbekistan Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden country-card transition-all duration-300">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden country-card transition-all duration-300 glow-card">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Uzbekistan" class="w-full h-48 object-cover">
                         <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
@@ -276,12 +421,14 @@
                                 <li>Modern Facilities</li>
                             </ul>
                         </div>
-                        <a href="#apply" class="block text-center bg-primary hover:bg-green-800 text-white py-2 px-4 rounded transition-all">Apply Now</a>
+                        <a href="#apply" class="block text-center bg-primary hover:bg-darkblue text-white py-2 px-4 rounded-lg transition-all transform hover:scale-105">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Nepal Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden country-card transition-all duration-300">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden country-card transition-all duration-300 glow-card">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Nepal" class="w-full h-48 object-cover">
                         <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
@@ -306,12 +453,14 @@
                                 <li>MCI Recognized Universities</li>
                             </ul>
                         </div>
-                        <a href="#apply" class="block text-center bg-primary hover:bg-green-800 text-white py-2 px-4 rounded transition-all">Apply Now</a>
+                        <a href="#apply" class="block text-center bg-primary hover:bg-darkblue text-white py-2 px-4 rounded-lg transition-all transform hover:scale-105">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Azerbaijan Card -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden country-card transition-all duration-300">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden country-card transition-all duration-300 glow-card">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1580502304784-8985b7eb7260?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Azerbaijan" class="w-full h-48 object-cover">
                         <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
@@ -336,9 +485,17 @@
                                 <li>Affordable Fees</li>
                             </ul>
                         </div>
-                        <a href="#apply" class="block text-center bg-primary hover:bg-green-800 text-white py-2 px-4 rounded transition-all">Apply Now</a>
+                        <a href="#apply" class="block text-center bg-primary hover:bg-darkblue text-white py-2 px-4 rounded-lg transition-all transform hover:scale-105">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#apply" class="inline-block bg-secondary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    Not Sure Which Country to Choose? Consult Our Experts
+                </a>
             </div>
         </div>
     </section>
@@ -346,35 +503,35 @@
     <!-- Why Choose Us Section -->
     <section id="why-us" class="py-16 bg-primary text-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Intermost Study Abroad?</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Intermost Ventures?</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="text-secondary text-4xl mb-4">
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
+                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-award"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Recognized Partners</h3>
                     <p>Official representatives of top medical universities recognized by WHO, MCI, and other global medical councils.</p>
                 </div>
                 
-                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="text-secondary text-4xl mb-4">
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
+                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-hand-holding-usd"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Affordable Education</h3>
                     <p>Low tuition fees starting at ₹1.5 lakh per semester with options for easy installment payments.</p>
                 </div>
                 
-                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="text-secondary text-4xl mb-4">
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
+                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Personalized Support</h3>
                     <p>Dedicated counselors for each student from application to graduation and beyond.</p>
                 </div>
                 
-                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="text-secondary text-4xl mb-4">
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
+                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-globe"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Global Network</h3>
@@ -382,23 +539,23 @@
                 </div>
             </div>
             
-            <div class="mt-12 bg-white bg-opacity-20 p-8 rounded-lg">
-                <h3 class="text-2xl font-semibold mb-4 text-center">Our Success Metrics</h3>
+            <div class="mt-12 bg-white bg-opacity-20 p-8 rounded-xl backdrop-blur-sm">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Our Success Metrics</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    <div>
-                        <div class="text-4xl font-bold text-secondary mb-2">500+</div>
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-secondary mb-2 animate-count" data-target="500">0</div>
                         <div class="text-sm uppercase tracking-wider">Students Placed</div>
                     </div>
-                    <div>
-                        <div class="text-4xl font-bold text-secondary mb-2">15+</div>
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-secondary mb-2 animate-count" data-target="15">0</div>
                         <div class="text-sm uppercase tracking-wider">Partner Universities</div>
                     </div>
-                    <div>
-                        <div class="text-4xl font-bold text-secondary mb-2">10+</div>
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-secondary mb-2 animate-count" data-target="10">0</div>
                         <div class="text-sm uppercase tracking-wider">Years Experience</div>
                     </div>
-                    <div>
-                        <div class="text-4xl font-bold text-secondary mb-2">95%</div>
+                    <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-secondary mb-2 animate-count" data-target="95">0</div>
                         <div class="text-sm uppercase tracking-wider">Visa Success Rate</div>
                     </div>
                 </div>
@@ -409,15 +566,20 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-primary mb-12">Student Success Stories</h2>
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Our Future Doctors Speak</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md testimonial-card transition-all duration-300">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md testimonial-card transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <div class="absolute -bottom-1 -right-1 bg-secondary text-white rounded-full p-1">
+                                <i class="fas fa-stethoscope text-xs"></i>
+                            </div>
+                        </div>
                         <div>
-                            <h4 class="font-bold text-primary">Priya Sharma</h4>
+                            <h4 class="font-bold text-primary">Dr. Priya Sharma</h4>
                             <p class="text-sm text-gray-600">MBBS in Georgia, Batch 2021</p>
                         </div>
                     </div>
@@ -433,14 +595,22 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-sm text-gray-500">Now practicing at Apollo Hospitals, New Delhi</p>
+                    </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md testimonial-card transition-all duration-300">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md testimonial-card transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <div class="absolute -bottom-1 -right-1 bg-secondary text-white rounded-full p-1">
+                                <i class="fas fa-stethoscope text-xs"></i>
+                            </div>
+                        </div>
                         <div>
-                            <h4 class="font-bold text-primary">Rahul Patel</h4>
+                            <h4 class="font-bold text-primary">Dr. Rahul Patel</h4>
                             <p class="text-sm text-gray-600">MBBS in Russia, Batch 2020</p>
                         </div>
                     </div>
@@ -456,14 +626,22 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-sm text-gray-500">Currently pursuing MD in Cardiology</p>
+                    </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md testimonial-card transition-all duration-300">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md testimonial-card transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <div class="absolute -bottom-1 -right-1 bg-secondary text-white rounded-full p-1">
+                                <i class="fas fa-stethoscope text-xs"></i>
+                            </div>
+                        </div>
                         <div>
-                            <h4 class="font-bold text-primary">Ananya Reddy</h4>
+                            <h4 class="font-bold text-primary">Dr. Ananya Reddy</h4>
                             <p class="text-sm text-gray-600">MBBS in Vietnam, Batch 2022</p>
                         </div>
                     </div>
@@ -479,7 +657,16 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-sm text-gray-500">Completed FMGE, preparing for PG</p>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#testimonials" class="inline-block bg-primary hover:bg-darkblue text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    View More Success Stories
+                </a>
             </div>
         </div>
     </section>
@@ -487,45 +674,66 @@
     <!-- Blog/Resources Section -->
     <section id="blog" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-primary mb-12">Blog & Resources</h2>
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Medical Education Resources</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Article 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f22c8e74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Article" class="w-full h-48 object-cover">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all hover:shadow-lg">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1581092921461-39b2f22c8e74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Article" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold">
+                            ADMISSION GUIDE
+                        </div>
+                    </div>
                     <div class="p-6">
-                        <span class="text-sm text-secondary font-semibold">ADMISSION GUIDE</span>
                         <h3 class="text-xl font-bold text-primary my-2">Complete Guide to MBBS Abroad 2025</h3>
                         <p class="text-gray-600 mb-4">Everything you need to know about eligibility, process, documents and timeline for MBBS admissions abroad.</p>
-                        <a href="#" class="text-accent font-semibold hover:underline">Read More →</a>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-accent font-semibold hover:underline">Read More →</a>
+                            <span class="text-xs text-gray-500">5 min read</span>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Article 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Article" class="w-full h-48 object-cover">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all hover:shadow-lg">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Article" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold">
+                            VISA PROCESS
+                        </div>
+                    </div>
                     <div class="p-6">
-                        <span class="text-sm text-secondary font-semibold">VISA PROCESS</span>
                         <h3 class="text-xl font-bold text-primary my-2">Student Visa Requirements for Medical Studies</h3>
                         <p class="text-gray-600 mb-4">Detailed breakdown of visa requirements for popular MBBS destinations including documents checklist.</p>
-                        <a href="#" class="text-accent font-semibold hover:underline">Read More →</a>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-accent font-semibold hover:underline">Read More →</a>
+                            <span class="text-xs text-gray-500">7 min read</span>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Article 3 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Article" class="w-full h-48 object-cover">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all hover:shadow-lg">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Article" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold">
+                            CAREER TIPS
+                        </div>
+                    </div>
                     <div class="p-6">
-                        <span class="text-sm text-secondary font-semibold">CAREER TIPS</span>
                         <h3 class="text-xl font-bold text-primary my-2">FMGE/NEXT Preparation While Studying Abroad</h3>
                         <p class="text-gray-600 mb-4">How to effectively prepare for Indian medical licensing exams during your MBBS course overseas.</p>
-                        <a href="#" class="text-accent font-semibold hover:underline">Read More →</a>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-accent font-semibold hover:underline">Read More →</a>
+                            <span class="text-xs text-gray-500">10 min read</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-10">
-                <a href="#" class="inline-block bg-primary hover:bg-green-800 text-white font-bold py-3 px-8 rounded-full transition-all">
+                <a href="#" class="inline-block bg-primary hover:bg-darkblue text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
                     View All Articles
                 </a>
             </div>
@@ -533,11 +741,11 @@
     </section>
 
     <!-- Apply Now Section -->
-    <section id="apply" class="py-16 bg-gradient-to-r from-primary to-green-800 text-white">
+    <section id="apply" class="py-16 bg-gradient-to-r from-primary to-darkblue text-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Start Your Medical Journey Today</h2>
             
-            <div class="max-w-4xl mx-auto bg-white bg-opacity-20 rounded-xl p-8 backdrop-blur-sm">
+            <div class="max-w-4xl mx-auto bg-white bg-opacity-20 rounded-xl p-8 backdrop-blur-sm shadow-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="text-2xl font-semibold mb-4">Apply Now</h3>
@@ -551,7 +759,7 @@
                             </div>
                             <div class="flex items-center mb-3">
                                 <i class="fas fa-envelope mr-3 text-secondary"></i>
-                                <span>admissions@intermost.in</span>
+                                <span>admissionintermost@gmail.com</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fab fa-whatsapp mr-3 text-secondary"></i>
@@ -563,28 +771,44 @@
                             <h4 class="text-xl font-semibold mb-3">Office Hours</h4>
                             <p>Monday to Saturday: 9:30 AM - 6:30 PM</p>
                         </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-xl font-semibold mb-3">Our Promise</h4>
+                            <div class="flex items-start mb-3">
+                                <i class="fas fa-check-circle text-secondary mr-2 mt-1"></i>
+                                <span>No hidden charges</span>
+                            </div>
+                            <div class="flex items-start mb-3">
+                                <i class="fas fa-check-circle text-secondary mr-2 mt-1"></i>
+                                <span>Direct university admission</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mr-2 mt-1"></i>
+                                <span>Post-admission support</span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div>
                         <form class="space-y-4">
                             <div>
                                 <label for="name" class="block mb-1">Full Name*</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 rounded bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary">
+                                <input type="text" id="name" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
                             </div>
                             
                             <div>
                                 <label for="email" class="block mb-1">Email*</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 rounded bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary">
+                                <input type="email" id="email" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
                             </div>
                             
                             <div>
                                 <label for="phone" class="block mb-1">Phone*</label>
-                                <input type="tel" id="phone" class="w-full px-4 py-2 rounded bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary">
+                                <input type="tel" id="phone" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
                             </div>
                             
                             <div>
                                 <label for="country" class="block mb-1">Preferred Country*</label>
-                                <select id="country" class="w-full px-4 py-2 rounded bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary">
+                                <select id="country" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
                                     <option value="">Select Country</option>
                                     <option value="Vietnam">Vietnam</option>
                                     <option value="Russia">Russia</option>
@@ -597,10 +821,10 @@
                             
                             <div>
                                 <label for="message" class="block mb-1">Your Message</label>
-                                <textarea id="message" rows="3" class="w-full px-4 py-2 rounded bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                                <textarea id="message" rows="3" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70"></textarea>
                             </div>
                             
-                            <button type="submit" class="w-full bg-secondary hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded transition-all">
+                            <button type="submit" class="w-full bg-secondary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 shadow-lg">
                                 Submit Application
                             </button>
                         </form>
@@ -616,7 +840,7 @@
             <h2 class="text-3xl font-bold text-center text-primary mb-12">Contact Us</h2>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <div class="bg-blue-50 p-6 rounded-xl shadow-sm">
                     <h3 class="text-xl font-semibold text-primary mb-4">Head Office - UAE</h3>
                     <div class="space-y-3">
                         <div class="flex items-start">
@@ -634,12 +858,12 @@
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <div class="bg-blue-50 p-6 rounded-xl shadow-sm">
                     <h3 class="text-xl font-semibold text-primary mb-4">India Office</h3>
                     <div class="space-y-3">
                         <div class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary"></i>
-                            <span>Intermost Study Abroad, Kochi, Kerala, India</span>
+                            <span>INTERMOST VENTURES ,Shop no -1, First floor,Vinayak mall,deewani crossing(lotus hospital building),M G Road Agra,282002 (U.P), India</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-secondary"></i>
@@ -647,33 +871,48 @@
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-secondary"></i>
-                            <span>admissions@intermost.in</span>
+                            <span>admissionintermost@gmail.com</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <div class="bg-blue-50 p-6 rounded-xl shadow-sm">
                     <h3 class="text-xl font-semibold text-primary mb-4">Connect With Us</h3>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-all">
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-all transform hover:scale-110">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition-all">
+                        <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition-all transform hover:scale-110">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-all">
+                        <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-all transform hover:scale-110">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition-all">
+                        <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-110">
                             <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition-all transform hover:scale-110">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition-all transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                     <p>Follow us for updates on admissions, student life abroad, and important announcements.</p>
                 </div>
             </div>
             
-            <div class="mt-12 rounded-lg overflow-hidden shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.577354634117!2d55.27218771548498!3d25.44312778377738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d9d8e8e8e8f%3A0x8e8e8e8e8e8e8e8f!2sDubai%20International%20Academic%20City!5e0!3m2!1sen!2sae!4v1620000000000!5m2!1sen!2sae" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="mt-12 rounded-xl overflow-hidden shadow-lg">
+           <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14011.26231902902!2d78.0029602!3d27.2071285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1715083500000!5m2!1sen!2sin" 
+  width="100%" 
+  height="450" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
             </div>
         </div>
     </section>
@@ -683,35 +922,35 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Intermost Study Abroad</h3>
+                    <h3 class="text-xl font-bold mb-4">Intermost Ventures Study Abroad</h3>
                     <p class="mb-4">Your trusted partner for global medical education since 2010.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-secondary"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="hover:text-secondary"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="hover:text-secondary">Home</a></li>
-                        <li><a href="#about" class="hover:text-secondary">About Us</a></li>
-                        <li><a href="#destinations" class="hover:text-secondary">MBBS Destinations</a></li>
-                        <li><a href="#why-us" class="hover:text-secondary">Why Choose Us</a></li>
-                        <li><a href="#apply" class="hover:text-secondary">Apply Now</a></li>
+                        <li><a href="#home" class="hover:text-secondary transition-all">Home</a></li>
+                        <li><a href="#about" class="hover:text-secondary transition-all">About Us</a></li>
+                        <li><a href="#destinations" class="hover:text-secondary transition-all">MBBS Destinations</a></li>
+                        <li><a href="#why-us" class="hover:text-secondary transition-all">Why Choose Us</a></li>
+                        <li><a href="#apply" class="hover:text-secondary transition-all">Apply Now</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Countries</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-secondary">MBBS in Vietnam</a></li>
-                        <li><a href="#" class="hover:text-secondary">MBBS in Russia</a></li>
-                        <li><a href="#" class="hover:text-secondary">MBBS in Georgia</a></li>
-                        <li><a href="#" class="hover:text-secondary">MBBS in Uzbekistan</a></li>
-                        <li><a href="#" class="hover:text-secondary">MBBS in Nepal</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-all">MBBS in Vietnam</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-all">MBBS in Russia</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-all">MBBS in Georgia</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-all">MBBS in Uzbekistan</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-all">MBBS in Nepal</a></li>
                     </ul>
                 </div>
                 
@@ -719,18 +958,18 @@
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <div class="space-y-2">
                         <p><i class="fas fa-phone-alt mr-2 text-secondary"></i> +91-9058501818</p>
-                        <p><i class="fas fa-envelope mr-2 text-secondary"></i> admissions@intermost.in</p>
+                        <p><i class="fas fa-envelope mr-2 text-secondary"></i> admissionintermost@gmail.com</p>
                         <p><i class="fab fa-whatsapp mr-2 text-secondary"></i> WhatsApp: +91-9058501818</p>
                     </div>
                 </div>
             </div>
             
             <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center text-sm">
-                <p>© 2023 Intermost Study Abroad / Ekam Marketing and Innovation Solutions FZ-LLC, UAE. All Rights Reserved.</p>
+                <p>© 2023 Intermost Ventures Study Abroad / Ekam Marketing and Innovation Solutions FZ-LLC, UAE. All Rights Reserved.</p>
                 <div class="mt-2">
-                    <a href="#" class="hover:text-secondary mr-4">Privacy Policy</a>
-                    <a href="#" class="hover:text-secondary mr-4">Terms of Service</a>
-                    <a href="#" class="hover:text-secondary">Disclaimer</a>
+                    <a href="#" class="hover:text-secondary mr-4 transition-all">Privacy Policy</a>
+                    <a href="#" class="hover:text-secondary mr-4 transition-all">Terms of Service</a>
+                    <a href="#" class="hover:text-secondary transition-all">Disclaimer</a>
                 </div>
             </div>
         </div>
@@ -742,6 +981,33 @@
             e.preventDefault();
             alert('Thank you for your application! Our counselor will contact you shortly.');
             this.reset();
+        });
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.animate-count');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+            
+            if(count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+            
+            function updateCount() {
+                const count = +counter.innerText;
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            }
         });
         
         // Mobile menu toggle functionality would go here
