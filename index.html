@@ -53,14 +53,14 @@
     </script>
     <style>
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 34, 96, 0.85), rgba(30, 58, 138, 0.85)), 
+            background-image: linear-gradient(rgba(15, 34, 96, 0.85), rgba(30, 58, 138, 0.65)), 
                               url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
         .doctor-bg {
-            background-image: linear-gradient(rgba(12, 15, 91, 0.92), rgba(30, 58, 138, 0.9)), 
+            background-image: linear-gradient(rgba(12, 15, 91, 0.92), rgba(30, 58, 138, 0.7)), 
                               url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -105,6 +105,73 @@
         }
         .glow-card:hover {
             box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+  
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .shorts-container {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .shorts-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .shorts-card {
+            min-width: 300px;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+        }
+        
+        .shorts-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.78%; /* 9:16 aspect ratio */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px 12px 0 0;
         }
     </style>
 </head>
@@ -198,6 +265,9 @@
                 </div>
                 <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
                     <img src="images/logo/usmle.png" alt="USMLE" class="h-16 object-contain">
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg glow-card transition-all">
+                    <img src="images/logo/NMC.jpg" alt="NMC" class="h-16 object-contain">
                 </div>
             </div>
         </div>
@@ -546,7 +616,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
-                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
+                    <div class=" text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-award"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Recognized Partners</h3>
@@ -554,7 +624,7 @@
                 </div>
                 
                 <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
-                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
+                    <div class=" text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-hand-holding-usd"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Affordable Education</h3>
@@ -562,7 +632,7 @@
                 </div>
                 
                 <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
-                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
+                    <div class=" text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Personalized Support</h3>
@@ -570,13 +640,188 @@
                 </div>
                 
                 <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-20 transition-all hover:bg-opacity-20 hover:shadow-lg">
-                    <div class="text-secondary text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
+                    <div class=" text-4xl mb-4 animate__animated animate__pulse animate__infinite animate__slower">
                         <i class="fas fa-globe"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Global Network</h3>
                     <p>Strong presence in multiple countries ensuring smooth transition and ongoing support.</p>
                 </div>
             </div>
+
+      
+      
+            <!-- YouTube Shorts Section -->
+            <section class="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-indigo-50 to-purple-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16 fade-in">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                            Student Stories
+                        </h2>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Watch real experiences from students studying abroad in short, engaging videos
+                        </p>
+                    </div>
+                    
+                    <div class="relative">
+                        <!-- Floating decorative elements -->
+                        <div class="absolute -top-20 -right-20 w-40 h-40 bg-purple-200 rounded-full opacity-20 filter blur-3xl float-animation"></div>
+                        <div class="absolute -bottom-20 -left-20 w-32 h-32 bg-indigo-200 rounded-full opacity-20 filter blur-3xl float-animation" style="animation-delay: 1s;"></div>
+                        
+                        <div class="shorts-container flex overflow-x-auto gap-6 pb-8 px-2">
+                            <!-- Short 1 -->
+                            <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.2s;">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/9xwazD5SyVg?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Channel avatar">
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="font-bold text-gray-900">First Week in London</h3>
+                                            <p class="text-gray-600 text-sm">@StudyAbroadAdventures</p>
+                                            <div class="flex items-center mt-2 text-gray-500 text-sm">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                <span class="mr-3">1.2M views</span>
+                                                <i class="fas fa-heart mr-1"></i>
+                                                <span>45K</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Short 2 -->
+                            <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.4s;">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel avatar">
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="font-bold text-gray-900">Campus Tour in Sydney</h3>
+                                            <p class="text-gray-600 text-sm">@GlobalStudentLife</p>
+                                            <div class="flex items-center mt-2 text-gray-500 text-sm">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                <span class="mr-3">850K views</span>
+                                                <i class="fas fa-heart mr-1"></i>
+                                                <span>32K</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Short 3 -->
+                            <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.6s;">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/J---aiyznGQ?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Channel avatar">
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="font-bold text-gray-900">Student Housing in Toronto</h3>
+                                            <p class="text-gray-600 text-sm">@TheStudyAbroadDiaries</p>
+                                            <div class="flex items-center mt-2 text-gray-500 text-sm">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                <span class="mr-3">1.5M views</span>
+                                                <i class="fas fa-heart mr-1"></i>
+                                                <span>68K</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Short 4 -->
+                            <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.8s;">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/7NOSDKb0HlU?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Channel avatar">
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="font-bold text-gray-900">Classes at UCLA</h3>
+                                            <p class="text-gray-600 text-sm">@InternationalStudentVlogs</p>
+                                            <div class="flex items-center mt-2 text-gray-500 text-sm">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                <span class="mr-3">2.1M views</span>
+                                                <i class="fas fa-heart mr-1"></i>
+                                                <span>89K</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Short 5 -->
+                            <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 1s;">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/6ZfuNTqbHE8?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/90.jpg" alt="Channel avatar">
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="font-bold text-gray-900">Making Friends Abroad</h3>
+                                            <p class="text-gray-600 text-sm">@StudyAbroadJourney</p>
+                                            <div class="flex items-center mt-2 text-gray-500 text-sm">
+                                                <i class="fas fa-eye mr-1"></i>
+                                                <span class="mr-3">1.8M views</span>
+                                                <i class="fas fa-heart mr-1"></i>
+                                                <span>76K</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-100 transition z-10 hidden md:flex">
+                            <i class="fas fa-chevron-left text-gray-700"></i>
+                        </button>
+                        <button class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-100 transition z-10 hidden md:flex">
+                            <i class="fas fa-chevron-right text-gray-700"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-16 text-center fade-in" style="animation-delay: 1.2s;">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            View More Student Stories
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
             
             <div class="mt-12 bg-white bg-opacity-20 p-8 rounded-xl backdrop-blur-sm">
                 <h3 class="text-2xl font-semibold mb-6 text-center">Our Success Metrics</h3>
@@ -888,7 +1133,7 @@
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-secondary"></i>
-                            <span>+971-9058501818</span>
+                            <span>+91-9058501818</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-secondary"></i>
@@ -918,24 +1163,21 @@
                 <div class="bg-blue-50 p-6 rounded-xl shadow-sm">
                     <h3 class="text-xl font-semibold text-primary mb-4">Connect With Us</h3>
                     <div class="flex flex-wrap gap-4 mb-4">
-                        <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-all transform hover:scale-110">
+                        <a href="http://facebook.com/intermoststudyabr0ad" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-all transform hover:scale-110">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition-all transform hover:scale-110">
+                        <a href="https://www.instagram.com/intermoststudyabroad/" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition-all transform hover:scale-110">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-all transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-110">
+                
+                        <a href="http://www.youtube.com/@IntermostStudyAbroad" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-110">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="#" class="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition-all transform hover:scale-110">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="#" class="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition-all transform hover:scale-110">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                   
+                       
                     </div>
                     <p>Follow us for updates on admissions, student life abroad, and important announcements.</p>
                 </div>
@@ -962,7 +1204,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4">Intermost Ventures Study Abroad</h3>
-                    <p class="mb-4">Your trusted partner for global medical education since 2010.</p>
+                    <p class="mb-4">Your trusted partner for global medical education since 2004.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-instagram"></i></a>
@@ -1051,6 +1293,43 @@
         
         // Mobile menu toggle functionality would go here
         // This is a placeholder for actual implementation
+    </script>
+    
+    <script>
+        // Simple JavaScript for the shorts carousel navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const shortsContainer = document.querySelector('.shorts-container');
+            const prevBtn = document.querySelector('.fa-chevron-left')?.parentElement;
+            const nextBtn = document.querySelector('.fa-chevron-right')?.parentElement;
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    shortsContainer.scrollBy({left: 320, behavior: 'smooth'});
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    shortsContainer.scrollBy({left: -320, behavior: 'smooth'});
+                });
+            }
+            
+            // Intersection Observer for scroll animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {threshold: 0.1});
+            
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
