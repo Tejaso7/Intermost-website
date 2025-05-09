@@ -142,7 +142,7 @@
         .hero-bg {
             position: relative;
             width: 100%;
-            height: 100vh;
+            height: calc(100vh - 77px);
             overflow: hidden;
           }
           
@@ -152,7 +152,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             z-index: 1;
           }
           
@@ -337,49 +336,66 @@
         }
     </style>
 </head>
-<body class="smooth-scroll font-sans bg-gray-50">
+<body class="smooth-scroll font-sans bg-gray-50 overflow-x-hidden">
 
 
 
     <!-- Header/Navbar -->
     <header class="sticky top-0 z-40 bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="relative">
-                    <img src="images/logo/logo.png" alt="Intermost Logo" style="height:5rem;width:auto;" >
-                </div>
-                <div>
-                    <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
-                    <div class="flex flex-wrap gap-1 mt-1">
-                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">WHO</span>
-                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">WFME</span>
-                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">ECFMG</span>
-                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">FAIMER</span>
-                        <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">USMLE</span>
-                    </div>
-                </div>
+          <!-- Logo and Info -->
+          <div class="flex items-center gap-3 me-4">
+            <div class="relative">
+              <img src="images/logo/logo.png" alt="Intermost Logo" style="height:50px;width:50px;">
             </div>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
-                <a href="#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
-                <a href="#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Destinations</a>
-                <a href="#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
-                <a href="#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
-                <a href="#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
-                <a href="#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
-            </nav>
-            
-            <button class="md:hidden text-primary">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <div>
+              <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">WHO</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">NMC</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">WFME</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">ECFMG</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">FAIMER</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">USMLE</span>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex space-x-8">
+            <a href="#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Destinations</a>
+            <a href="#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+      
+          <!-- Hamburger Button -->
+          <button id="menu-btn" class="lg:hidden text-primary focus:outline-none">
+            <i class="fas fa-bars text-2xl me-4"></i>
+          </button>
         </div>
-    </header>
+      
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4 bg-white container mx-auto">
+          <nav class="flex flex-col space-y-2">
+            <a href="#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Destinations</a>
+            <a href="#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+        </div>
+      </header>
 
     <!-- Hero Section -->
-<section id="home" class="hero-bg text-white py-20 md:py-32 relative overflow-hidden">
+<section id="home" class="hero-bg text-white relative overflow-hidden flex flex-col justify-center">
     <!-- Background Video -->
-    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-[calc( 100vh - 50px)] z-0">
         <source src="images/instagram_1746791765301(720p).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -839,10 +855,12 @@
                 <!-- Short 1 -->
                 <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.2s;">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/JZgeDZOlSl0?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+                        <iframe 
+                        src="https://www.youtube.com/embed/JZgeDZOlSl0?autoplay=1&controls=1&modestbranding=1&rel=0" 
+                        frameborder="0" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                      </iframe>
                     </div>
                     <div class="p-5">
                         <div class="flex items-start">
@@ -866,9 +884,9 @@
                 <!-- Short 2 -->
                 <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.4s;">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/GZoixzGgYNA?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                        <iframe src="https://www.youtube.com/embed/GZoixzGgYNA?autoplay=0&controls=0&modestbranding=1&rel=0" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
                     <div class="p-5">
@@ -893,9 +911,9 @@
                 <!-- Short 3 -->
                 <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.6s;">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/2m1pOvKRhsU?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                        <iframe src="https://www.youtube.com/embed/2m1pOvKRhsU?autoplay=0&controls=0&modestbranding=1&rel=0" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
                     <div class="p-5">
@@ -920,9 +938,9 @@
                 <!-- Short 4 -->
                 <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 0.8s;">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/qsRofiNxeRY?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                        <iframe src="https://www.youtube.com/embed/qsRofiNxeRY?autoplay=0&controls=0&modestbranding=1&rel=0" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
                     <div class="p-5">
@@ -947,9 +965,9 @@
                 <!-- Short 5 -->
                 <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 1s;">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/I3JH4adBwUk?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                        <iframe src="https://www.youtube.com/embed/I3JH4adBwUk?autoplay=0&controls=0&modestbranding=1&rel=0" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
                     <div class="p-5">
@@ -974,9 +992,9 @@
                 <!-- Short 6 -->
                 <div class="shorts-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in" style="animation-delay: 1.2s;">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/7kGQyoaKv5I?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0" 
+                        <iframe src="https://www.youtube.com/embed/7kGQyoaKv5I?autoplay=0&controls=0&modestbranding=1&rel=0" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
                     <div class="p-5">
@@ -1271,44 +1289,6 @@
                     </div>
                     
                     <div>
-                        <form class="space-y-4">
-                            <div>
-                                <label for="name" class="block mb-1">Full Name*</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
-                            </div>
-                            
-                            <div>
-                                <label for="email" class="block mb-1">Email*</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
-                            </div>
-                            
-                            <div>
-                                <label for="phone" class="block mb-1">Phone*</label>
-                                <input type="tel" id="phone" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
-                            </div>
-                            
-                            <div>
-                                <label for="country" class="block mb-1">Preferred Country*</label>
-                                <select id="country" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70">
-                                    <option value="">Select Country</option>
-                                    <option value="Vietnam">Vietnam</option>
-                                    <option value="Russia">Russia</option>
-                                    <option value="Georgia">Georgia</option>
-                                    <option value="Uzbekistan">Uzbekistan</option>
-                                    <option value="Nepal">Nepal</option>
-                                    <option value="Azerbaijan">Azerbaijan</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block mb-1">Your Message</label>
-                                <textarea id="message" rows="3" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-50 focus:outline-none focus:ring-2 focus:ring-secondary placeholder-white placeholder-opacity-70"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-secondary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 shadow-lg">
-                                Submit Application
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -1496,7 +1476,14 @@
         // Mobile menu toggle functionality would go here
         // This is a placeholder for actual implementation
     </script>
-    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+      
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      </script>
     <script>
         // Simple JavaScript for the shorts carousel navigation
         document.addEventListener('DOMContentLoaded', function() {
