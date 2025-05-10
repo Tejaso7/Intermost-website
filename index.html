@@ -1440,41 +1440,27 @@
 
     <script>
         // Simple form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your application! Our counselor will contact you shortly.');
-            this.reset();
-        });
-        
-        // Counter animation
-        const counters = document.querySelectorAll('.animate-count');
-        const speed = 200;
-        
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / speed;
-            
-            if(count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 1);
-            } else {
-                counter.innerText = target;
-            }
-            
-            function updateCount() {
-                const count = +counter.innerText;
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(updateCount, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            }
-        });
-        
-        // Mobile menu toggle functionality would go here
-        // This is a placeholder for actual implementation
+     const counters = document.querySelectorAll('.animate-count');
+const speed = 200;
+
+counters.forEach((counter) => {
+    const target = +counter.getAttribute('data-target'); // Convert to number
+    let count = 0;
+
+    const increment = target / speed;
+
+    function updateCount() {
+        if (count < target) {
+            count += increment;
+            counter.innerText = Math.ceil(count);
+            setTimeout(updateCount, 10); // Smoother animation
+        } else {
+            counter.innerText = target;
+        }
+    }
+
+    updateCount();
+});
     </script>
     <script>
         const menuBtn = document.getElementById('menu-btn');
