@@ -18,7 +18,50 @@
   </style>
 </head>
 <body class="bg-gray-100">
-
+ <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+          <!-- Logo and Info -->
+          <div class="flex items-center gap-3 me-4">
+            <div class="relative">
+              <img src="images/logo/logo.png" alt="Intermost Logo" style="height:50px;width:50px;">
+            </div>
+            <div>
+              <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
+              <div class="flex flex-wrap gap-1 mt-1">      
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Uzbekistan</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Georgia</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Nepal</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Vietnam</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Tajikistan</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Russia</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Kazakhstan</span>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex space-x-8">
+            <a href="index.html" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+ 
+          </nav>
+      
+          <!-- Hamburger Button -->
+          <button id="menu-btn" class="lg:hidden text-primary focus:outline-none">
+            <i class="fas fa-bars text-2xl me-4"></i>
+          </button>
+        </div>
+      
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4 bg-white container mx-auto">
+          <nav class="flex flex-col space-y-2">
+            <a href="index.html" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            
+          </nav>
+        </div>
+      </header>
+<marquee behavior="scroll" direction="left" scrollamount="6" style="background: #f8f9fa; color:#0a192f ; padding: 10px; font-weight: bold; font-size: 1.1rem;">
+  📢 Opening In India!! — New Office Launch in Agra 🏢 — Welcome India 🇮🇳
+</marquee>
   <!-- 🌏 Hero Section with Video -->
   <section class="hero relative h-screen flex items-center justify-center text-white text-center">
     <video autoplay muted loop>
