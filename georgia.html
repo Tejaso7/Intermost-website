@@ -67,6 +67,50 @@
       transition: max-height 0.3s ease-out;
     }
   </style>
+   <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0a192f',       // Very dark navy blue (premium feel)
+                        secondary: '#112240',     // Dark muted blue
+                        accent: '#233554',        // Soft dark blue for accents
+                        darkblue: '#0a0f1a',      // Deep, almost black-blue
+                        lightblue: '#3d5a80'      // Muted light blue for highlights
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'heartbeat': 'heartbeat 1.5s ease infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        heartbeat: {
+                            '0%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.1)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.1)' },
+                            '70%': { transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-100 font-sans">
    <header class="sticky top-0 z-40 bg-white shadow-md">
@@ -79,13 +123,13 @@
             <div>
               <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
               <div class="flex flex-wrap gap-1 mt-1">      
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Uzbekistan</span>
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Georgia</span>
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Nepal</span>
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Vietnam</span>
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Tajikistan</span>
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Russia</span>
-                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Kazakhstan</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="uzbekistan.html">Uzbekistan</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="georgia.html">Georgia</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="nepal.html">Nepal</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="vietnam.html">Vietnam</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="tezijistan.html">Tajikistan</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="russia.html">Russia</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="kazakistan.html">Kazakhstan</a></span>
               </div>
             </div>
           </div>
@@ -197,7 +241,7 @@
       <!-- Caucasus University -->
       <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
         <div class="relative">
-          <img src="https://source.unsplash.com/random/600x400/?university,georgia" alt="Caucasus University" class="w-full h-48 object-cover">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg" alt="Caucasus University" class="w-full h-48 object-cover">
           <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
             NMC Approved
           </div>
@@ -236,7 +280,7 @@
       <!-- Alte University -->
       <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
         <div class="relative">
-          <img src="https://source.unsplash.com/random/600x400/?medical,school" alt="Alte University" class="w-full h-48 object-cover">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?medical,school" alt="Alte University" class="w-full h-48 object-cover">
           <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
             NMC Approved
           </div>
@@ -272,7 +316,7 @@
       <!-- SEU - Georgian National University -->
       <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
         <div class="relative">
-          <img src="https://source.unsplash.com/random/600x400/?hospital,georgia" alt="Georgian National University (SEU)" class="w-full h-48 object-cover">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?hospital,georgia" alt="Georgian National University (SEU)" class="w-full h-48 object-cover">
           <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
             NMC Approved
           </div>
@@ -308,7 +352,7 @@
       <!-- East European University -->
       <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
         <div class="relative">
-          <img src="https://source.unsplash.com/random/600x400/?campus,georgia" alt="East European University" class="w-full h-48 object-cover">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?campus,georgia" alt="East European University" class="w-full h-48 object-cover">
           <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
             NMC Approved
           </div>
@@ -344,7 +388,7 @@
       <!-- Batumi International University -->
       <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
         <div class="relative">
-          <img src="https://source.unsplash.com/random/600x400/?university,batumi" alt="Batumi International University" class="w-full h-48 object-cover">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?university,batumi" alt="Batumi International University" class="w-full h-48 object-cover">
           <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
             NMC Approved
           </div>
@@ -380,7 +424,7 @@
       <!-- Tbilisi State Medical University -->
       <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
         <div class="relative">
-          <img src="https://source.unsplash.com/random/600x400/?medical,library" alt="Tbilisi State Medical University" class="w-full h-48 object-cover">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?medical,library" alt="Tbilisi State Medical University" class="w-full h-48 object-cover">
           <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
             NMC Approved
           </div>
