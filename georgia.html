@@ -69,54 +69,60 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white shadow-md">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Logo and Info -->
-      <div class="flex items-center gap-3 mr-4">
-        <div class="relative">
-          <img src="https://via.placeholder.com/50" alt="Intermost Logo" class="h-12 w-12 rounded-full">
-        </div>
-        <div>
-          <h1 class="text-xl font-bold text-blue-800">INTERMOST STUDY ABROAD</h1>
-          <div class="flex flex-wrap gap-1 mt-1">
-            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Uzbekistan</span>
-            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Georgia</span>
-            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Nepal</span>
-            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Vietnam</span>
+   <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+          <!-- Logo and Info -->
+          <div class="flex items-center gap-3 me-4">
+            <div class="relative">
+              <img src="images/logo/logo.png" alt="Intermost Logo" style="height:50px;width:50px;">
+            </div>
+            <div>
+              <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
+              <div class="flex flex-wrap gap-1 mt-1">      
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Uzbekistan</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Georgia</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Nepal</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Vietnam</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Tajikistan</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Russia</span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">Kazakhstan</span>
+              </div>
+            </div>
           </div>
+      
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex space-x-8">
+            <a href="#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="#news" class="text-primary hover:text-secondary font-medium transition-all">News</a>
+            <a href="#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Courses</a>
+            <a href="#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+      
+          <!-- Hamburger Button -->
+          <button id="menu-btn" class="lg:hidden text-primary focus:outline-none">
+            <i class="fas fa-bars text-2xl me-4"></i>
+          </button>
         </div>
-      </div>
       
-      <!-- Desktop Nav -->
-      <nav class="hidden lg:flex space-x-8">
-        <a href="#home" class="text-blue-800 hover:text-blue-600 font-medium transition-all">Home</a>
-        <a href="#about" class="text-blue-800 hover:text-blue-600 font-medium transition-all">About Us</a>
-        <a href="#news" class="text-blue-800 hover:text-blue-600 font-medium transition-all">News</a>
-        <a href="#destinations" class="text-blue-800 hover:text-blue-600 font-medium transition-all">MBBS Courses</a>
-        <a href="#why-us" class="text-blue-800 hover:text-blue-600 font-medium transition-all">Why Choose Us</a>
-        <a href="#testimonials" class="text-blue-800 hover:text-blue-600 font-medium transition-all">Testimonials</a>
-      </nav>
-      
-      <!-- Hamburger Button -->
-      <button id="menu-btn" class="lg:hidden text-blue-800 focus:outline-none">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4 bg-white container mx-auto">
-      <nav class="flex flex-col space-y-2">
-        <a href="#home" class="text-blue-800 hover:text-blue-600 font-medium transition-all">Home</a>
-        <a href="#about" class="text-blue-800 hover:text-blue-600 font-medium transition-all">About Us</a>
-        <a href="#destinations" class="text-blue-800 hover:text-blue-600 font-medium transition-all">MBBS Courses</a>
-        <a href="#why-us" class="text-blue-800 hover:text-blue-600 font-medium transition-all">Why Choose Us</a>
-        <a href="#testimonials" class="text-blue-800 hover:text-blue-600 font-medium transition-all">Testimonials</a>
-      </nav>
-    </div>
-  </header>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4 bg-white container mx-auto">
+          <nav class="flex flex-col space-y-2">
+            <a href="#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Courses</a>
+            <a href="#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+        </div>
+      </header>
 
+ 
   <!-- Marquee -->
   <div class="marquee">
     <span>📢 Opening In India!! — New Office Launch in Agra 🏢 — Welcome India 🇮🇳 — Limited Time Discount on Application Fees — Book Your Free Consultation Today!</span>
@@ -506,77 +512,7 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-12 px-4 max-w-6xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">
-      <i class="fas fa-quote-left text-blue-600 mr-2"></i> Student Testimonials
-    </h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Testimonial 1 -->
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center mb-4">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
-          <div>
-            <h4 class="font-semibold text-gray-800">Priya Sharma</h4>
-            <p class="text-sm text-gray-500">Caucasus University, Batch 2020</p>
-          </div>
-        </div>
-        <p class="text-gray-600 italic">
-          "The quality of education is excellent and the faculty is very supportive. The university provides all necessary facilities for international students."
-        </p>
-        <div class="mt-4 flex text-yellow-400">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-      </div>
-      
-      <!-- Testimonial 2 -->
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center mb-4">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
-          <div>
-            <h4 class="font-semibold text-gray-800">Rahul Patel</h4>
-            <p class="text-sm text-gray-500">Alte University, Batch 2019</p>
-          </div>
-        </div>
-        <p class="text-gray-600 italic">
-          "Living in Tbilisi is very affordable. The university helped me with all the documentation and visa process. The clinical exposure is excellent."
-        </p>
-        <div class="mt-4 flex text-yellow-400">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-      </div>
-      
-      <!-- Testimonial 3 -->
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center mb-4">
-          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
-          <div>
-            <h4 class="font-semibold text-gray-800">Anjali Gupta</h4>
-            <p class="text-sm text-gray-500">Batumi University, Batch 2021</p>
-          </div>
-        </div>
-        <p class="text-gray-600 italic">
-          "Batumi is a beautiful city by the sea. The university has modern labs and the professors are very knowledgeable. I'm happy with my decision."
-        </p>
-        <div class="mt-4 flex text-yellow-400">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-      </div>
-    </div>
-  </section>
+ 
 
   <!-- FAQ Section -->
   <section class="py-12 px-4 max-w-4xl mx-auto bg-white rounded-lg shadow-sm">
