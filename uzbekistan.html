@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top MBBS Colleges in Vietnam</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top MBBS Colleges in Georgia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    .hero {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+    
     .hero video {
       position: absolute;
       top: 0;
@@ -15,114 +27,748 @@
       object-fit: cover;
       z-index: -1;
     }
+    
+    .college-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .marquee {
+      background: #f8f9fa;
+      color: #0a192f;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 15s linear infinite;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 50;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
   </style>
+   <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0a192f',       // Very dark navy blue (premium feel)
+                        secondary: '#112240',     // Dark muted blue
+                        accent: '#233554',        // Soft dark blue for accents
+                        darkblue: '#0a0f1a',      // Deep, almost black-blue
+                        lightblue: '#3d5a80'      // Muted light blue for highlights
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'heartbeat': 'heartbeat 1.5s ease infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        heartbeat: {
+                            '0%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.1)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.1)' },
+                            '70%': { transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans">
+   <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+          <!-- Logo and Info -->
+          <div class="flex items-center gap-3 me-4">
+            <div class="relative">
+              <img src="images/logo/logo.png" alt="Intermost Logo" style="height:50px;width:50px;">
+            </div>
+            <div>
+              <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
+              <div class="flex flex-wrap gap-1 mt-1">      
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="uzbekistan.html">Uzbekistan</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="georgia.html">Georgia</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="nepal.html">Nepal</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="vietnam.html">Vietnam</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="tezijistan.html">Tajikistan</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="russia.html">Russia</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="kazakistan.html">Kazakhstan</a></span>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex space-x-8">
+            <a href="index#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="index#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="index#news" class="text-primary hover:text-secondary font-medium transition-all">News</a>
+            <a href="index#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Courses</a>
+            <a href="index#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="index#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="index#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="index#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+      
+          <!-- Hamburger Button -->
+          <button id="menu-btn" class="lg:hidden text-primary focus:outline-none">
+            <i class="fas fa-bars text-2xl me-4"></i>
+          </button>
+        </div>
+      
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4 bg-white container mx-auto">
+          <nav class="flex flex-col space-y-2">
+            <a href="index#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="index#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="index#news" class="text-primary hover:text-secondary font-medium transition-all">News</a>
+            <a href="index#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Courses</a>
+            <a href="index#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="index#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="index#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="index#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+        </div>
+      </header>
 
-  <!-- 🌏 Hero Section with Video -->
-  <section class="hero relative h-screen flex items-center justify-center text-white text-center bg-black">
+ 
+  <!-- Marquee -->
+  <div class="marquee">
+    <span>📢 Opening In India!! — New Office Launch in Agra 🏢 — Welcome India 🇮🇳 — Limited Time Discount on Application Fees — Book Your Free Consultation Today!</span>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
     <video autoplay muted loop>
-      <source src="videos/vietnam-campus.mp4" type="video/mp4">
+      <source src="images/uz.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="bg-black bg-opacity-60 p-6 rounded-lg">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Top MBBS Colleges in Uzbekistan</h1>
-      <p class="text-lg md:text-xl">Explore high-quality, affordable medical education in the heart of Southeast Asia.</p>
+    <div class="bg-black bg-opacity-60 p-6 rounded-lg mx-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Top MBBS Colleges in Georgia</h1>
+      <p class="text-lg md:text-xl mb-6">Explore high-quality, affordable medical education in a culturally rich country at the crossroads of Europe and Asia.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all">
+          Apply Now <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+        <button class="bg-white hover:bg-gray-100 text-blue-800 px-6 py-3 rounded-lg font-medium transition-all">
+          <i class="fas fa-play-circle mr-2"></i> Watch Video
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- 🏫 College Cards Section -->
-  <section class="py-12 px-4 max-w-7xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">🏥 Featured MBBS Colleges</h2>
+  <!-- Introduction Section -->
+  <section id="about" class="py-12 px-4 max-w-6xl mx-auto bg-white rounded-lg shadow-sm mt-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Why Study MBBS in Georgia?</h2>
+    <p class="text-gray-700 leading-relaxed mb-6 text-center">
+      Georgia has rapidly become a favored destination for Indian students pursuing MBBS abroad. With globally recognized universities, English-medium instruction, and European standards at low cost, Georgia offers an excellent platform for quality medical education.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3 class="font-semibold text-gray-800">Globally Recognized</h3>
+        <p class="text-sm text-gray-600 mt-2">NMC and WHO approved degrees</p>
+      </div>
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-language"></i>
+        </div>
+        <h3 class="font-semibold text-gray-800">English Medium</h3>
+        <p class="text-sm text-gray-600 mt-2">No language barrier for Indian students</p>
+      </div>
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-money-bill-wave"></i>
+        </div>
+        <h3 class="font-semibold text-gray-800">Affordable</h3>
+        <p class="text-sm text-gray-600 mt-2">Low tuition fees compared to India</p>
+      </div>
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="font-semibold text-gray-800">Safe Environment</h3>
+        <p class="text-sm text-gray-600 mt-2">Friendly for international students</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- College Cards Section -->
+  <section id="destinations" class="py-12 px-4 max-w-7xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">
+      <i class="fas fa-university mr-2 text-blue-600"></i> Top MBBS Colleges in Georgia
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Caucasus University -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
+        <div class="relative">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg" alt="Caucasus University" class="w-full h-48 object-cover">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+            NMC Approved
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Caucasus University</h3>
+            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Top Rated</span>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Private university located in Tbilisi, offering NMC-approved MBBS with internship included.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-blue-700 flex items-center">
+              <i class="fas fa-money-bill-wave mr-2"></i> Tuition Fee: $5,500–6,000/year
+            </p>
+            <p class="text-sm font-medium text-blue-700 flex items-center mt-2">
+              <i class="fas fa-home mr-2"></i> Hostel: $1,200–1,500/year
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-4">
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> NMC
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WHO
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> ECFMG
+            </span>
+          </div>
+          <button class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      
+      <!-- Alte University -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
+        <div class="relative">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?medical,school" alt="Alte University" class="w-full h-48 object-cover">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+            NMC Approved
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Alte University</h3>
+          <p class="text-sm text-gray-600 mb-4">Affordable MBBS program with strong student support services and English instruction.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-blue-700 flex items-center">
+              <i class="fas fa-money-bill-wave mr-2"></i> Tuition Fee: $4,500–5,500/year
+            </p>
+            <p class="text-sm font-medium text-blue-700 flex items-center mt-2">
+              <i class="fas fa-home mr-2"></i> Hostel: $1,000–1,300/year
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-4">
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> NMC
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WHO
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WDOMS
+            </span>
+          </div>
+          <button class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      
+      <!-- SEU - Georgian National University -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
+        <div class="relative">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?hospital,georgia" alt="Georgian National University (SEU)" class="w-full h-48 object-cover">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+            NMC Approved
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Georgian National University (SEU)</h3>
+          <p class="text-sm text-gray-600 mb-4">Offers modern infrastructure and experienced faculty for international students.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-blue-700 flex items-center">
+              <i class="fas fa-money-bill-wave mr-2"></i> Tuition Fee: $5,000–5,500/year
+            </p>
+            <p class="text-sm font-medium text-blue-700 flex items-center mt-2">
+              <i class="fas fa-home mr-2"></i> Hostel: ~$1,200/year
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-4">
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> NMC
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WHO
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WDOMS
+            </span>
+          </div>
+          <button class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      
+      <!-- East European University -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
+        <div class="relative">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?campus,georgia" alt="East European University" class="w-full h-48 object-cover">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+            NMC Approved
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">East European University</h3>
+          <p class="text-sm text-gray-600 mb-4">Known for its clinical training and diverse student community in Tbilisi.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-blue-700 flex items-center">
+              <i class="fas fa-money-bill-wave mr-2"></i> Tuition Fee: $4,500–5,000/year
+            </p>
+            <p class="text-sm font-medium text-blue-700 flex items-center mt-2">
+              <i class="fas fa-home mr-2"></i> Hostel: $1,000–1,400/year
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-4">
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> NMC
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WHO
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> ECFMG
+            </span>
+          </div>
+          <button class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      
+      <!-- Batumi International University -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
+        <div class="relative">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?university,batumi" alt="Batumi International University" class="w-full h-48 object-cover">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+            NMC Approved
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Batumi International University</h3>
+          <p class="text-sm text-gray-600 mb-4">Located on the Black Sea coast, known for scenic beauty and comfortable living conditions.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-blue-700 flex items-center">
+              <i class="fas fa-money-bill-wave mr-2"></i> Tuition Fee: $5,000–6,000/year
+            </p>
+            <p class="text-sm font-medium text-blue-700 flex items-center mt-2">
+              <i class="fas fa-home mr-2"></i> Hostel: $1,000–1,300/year
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-4">
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> NMC
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WHO
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> FAIMER
+            </span>
+          </div>
+          <button class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      
+      <!-- Tbilisi State Medical University -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 college-card">
+        <div class="relative">
+          <img src="https://smcw.edu.in/assets/images/img_1.jpg""https://source.unsplash.com/random/600x400/?medical,library" alt="Tbilisi State Medical University" class="w-full h-48 object-cover">
+          <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+            NMC Approved
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Tbilisi State Medical University</h3>
+          <p class="text-sm text-gray-600 mb-4">One of the oldest and most prestigious medical universities in Georgia.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-blue-700 flex items-center">
+              <i class="fas fa-money-bill-wave mr-2"></i> Tuition Fee: $6,000–7,000/year
+            </p>
+            <p class="text-sm font-medium text-blue-700 flex items-center mt-2">
+              <i class="fas fa-home mr-2"></i> Hostel: $1,500–2,000/year
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-4">
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> NMC
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> WHO
+            </span>
+            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1"></i> ECFMG
+            </span>
+          </div>
+          <button class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all">
+            Apply Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Info Section -->
+  <section id="why-us" class="py-12 px-4 max-w-6xl mx-auto bg-white rounded-lg shadow-sm">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Eligibility & Important Details</h2>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- College 1 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college1.jpg" alt="Hanoi Medical University" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hanoi Medical University</h3>
-          <p class="text-sm text-gray-600 mb-3">One of Vietnam’s oldest and most prestigious institutions, known for world-class faculty and clinical exposure.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$4,000/year</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+          <i class="fas fa-clipboard-check text-blue-600 mr-2"></i> Eligibility Criteria
+        </h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-green-500">
+              <i class="fas fa-check-circle mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">10+2 with Physics, Chemistry, Biology</p>
+          </li>
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-green-500">
+              <i class="fas fa-check-circle mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">Minimum 50% marks in PCB (40% for reserved categories)</p>
+          </li>
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-green-500">
+              <i class="fas fa-check-circle mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">NEET qualification mandatory for Indian students</p>
+          </li>
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-green-500">
+              <i class="fas fa-check-circle mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">Minimum age: 17 years by December 31st of admission year</p>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+          <i class="fas fa-money-bill-wave text-blue-600 mr-2"></i> Average Cost Breakdown
+        </h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-blue-500">
+              <i class="fas fa-rupee-sign mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">Tuition: $4,500–6,000/year</p>
+          </li>
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-blue-500">
+              <i class="fas fa-rupee-sign mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">Hostel: $1,000–1,500/year</p>
+          </li>
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-blue-500">
+              <i class="fas fa-rupee-sign mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">Living Expenses: $150–200/month</p>
+          </li>
+          <li class="flex items-start">
+            <div class="flex-shrink-0 h-6 w-6 text-blue-500">
+              <i class="fas fa-rupee-sign mt-1"></i>
+            </div>
+            <p class="ml-2 text-gray-600">Visa: Student Visa (D3), valid for 1 year (renewable)</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="mt-10">
+      <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+        <i class="fas fa-home text-blue-600 mr-2"></i> Accommodation & Lifestyle
+      </h3>
+      <p class="text-gray-600 mb-4">
+        Universities provide hostels with kitchens, and Indian food is easily available. Cities like Tbilisi and Batumi offer safe, vibrant student life with modern amenities and diverse transport options.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <div class="bg-blue-50 p-3 rounded-lg text-center">
+          <i class="fas fa-utensils text-blue-600 text-xl mb-2"></i>
+          <p class="text-sm text-gray-700">Indian Food Available</p>
+        </div>
+        <div class="bg-blue-50 p-3 rounded-lg text-center">
+          <i class="fas fa-wifi text-blue-600 text-xl mb-2"></i>
+          <p class="text-sm text-gray-700">High-Speed Internet</p>
+        </div>
+        <div class="bg-blue-50 p-3 rounded-lg text-center">
+          <i class="fas fa-subway text-blue-600 text-xl mb-2"></i>
+          <p class="text-sm text-gray-700">Public Transport</p>
+        </div>
+        <div class="bg-blue-50 p-3 rounded-lg text-center">
+          <i class="fas fa-shield-alt text-blue-600 text-xl mb-2"></i>
+          <p class="text-sm text-gray-700">Safe Environment</p>
         </div>
       </div>
-
-      <!-- College 2 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college2.jpg" alt="University of Medicine and Pharmacy, HCMC" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">University of Medicine and Pharmacy, HCMC</h3>
-          <p class="text-sm text-gray-600 mb-3">Located in Ho Chi Minh City, offers MBBS programs in English with international student support.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$4,500/year</p>
-        </div>
-      </div>
-
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
+ 
+
+  <!-- FAQ Section -->
+  <section class="py-12 px-4 max-w-4xl mx-auto bg-white rounded-lg shadow-sm">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">
+      <i class="fas fa-question-circle text-blue-600 mr-2"></i> Frequently Asked Questions
+    </h2>
+    
+    <div class="space-y-4">
+      <!-- FAQ Item 1 -->
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition-all">
+          <span class="font-medium text-gray-800">Is MBBS from Georgia valid in India?</span>
+          <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-content">
+          <div class="p-4 text-gray-600">
+            Yes, MBBS degrees from NMC-approved Georgian medical universities are valid in India. After completing your degree, you need to clear the Foreign Medical Graduates Examination (FMGE) to practice in India.
+          </div>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 2 -->
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition-all">
+          <span class="font-medium text-gray-800">What is the duration of MBBS in Georgia?</span>
+          <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-content">
+          <div class="p-4 text-gray-600">
+            The MBBS program in Georgia typically lasts for 6 years, which includes 5 years of academic study and 1 year of internship. Some universities may have slightly different structures.
+          </div>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 3 -->
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition-all">
+          <span class="font-medium text-gray-800">Is NEET required for MBBS in Georgia?</span>
+          <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-content">
+          <div class="p-4 text-gray-600">
+            Yes, since 2018, NEET qualification is mandatory for Indian students who wish to pursue MBBS abroad, including in Georgia. You need to qualify NEET to be eligible for admission.
+          </div>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 4 -->
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition-all">
+          <span class="font-medium text-gray-800">How is the climate in Georgia for Indian students?</span>
+          <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-content">
+          <div class="p-4 text-gray-600">
+            Georgia has a moderate climate with four distinct seasons. Winters can be cold (especially in mountainous regions) but cities like Tbilisi and Batumi have milder winters compared to northern countries. Indian students generally adapt well to the climate.
+          </div>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 5 -->
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition-all">
+          <span class="font-medium text-gray-800">What is the medium of instruction?</span>
+          <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+        </button>
+        <div class="accordion-content">
+          <div class="p-4 text-gray-600">
+            All NMC-approved medical universities in Georgia offer MBBS programs in English medium. This makes it convenient for international students, especially from India.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 px-4 bg-blue-700 text-white mt-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Ready to Start Your MBBS Journey in Georgia?</h2>
+      <p class="text-lg mb-8">Our expert counselors will guide you through the entire admission process and help you choose the best university.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="bg-white hover:bg-gray-100 text-blue-800 px-8 py-3 rounded-lg font-medium transition-all" >
+          
+          <i class="fas fa-phone-alt mr-2"></i> <a href="tel:+918448614697">Book Free Consultation</a>
+        </button>
+        <button class="bg-blue-800 hover:bg-blue-900 text-white px-8 py-3 rounded-lg font-medium transition-all border border-white">
+          <i class="fas fa-download mr-2"></i> Download Brochure
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="rounded">
+                    <img src="images/logo/logo.png" alt="Intermost Logo" style="height:10rem;width:auto;" class="rounded-full shadow-lg">
+
+                        
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Intermost Ventures Study Abroad</h3>
+                    <p class="mb-4">Your trusted partner for global medical education since 2004.</p>
+                    <div class="flex space-x-4">
+                        <a href="http://facebook.com/intermoststudyabr0ad" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/intermoststudyabroad/" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href=" https://wa.me/919058501818" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-whatsapp"></i></a>
+                        <a href="http://www.youtube.com/@IntermostStudyAbroad" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index#home" class="hover:text-secondary transition-all">Home</a></li>
+                        <li><a href="index#about" class="hover:text-secondary transition-all">About Us</a></li>
+                        <li><a href="index#destinations" class="hover:text-secondary transition-all">MBBS Destinations</a></li>
+                        <li><a href="index#why-us" class="hover:text-secondary transition-all">Why Choose Us</a></li>
+                        <li><a href="index#apply" class="hover:text-secondary transition-all">Apply Now</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Countries</h4>
+                    <ul class="space-y-2">
+                        <li><a href="uzbekistan.html" class="hover:text-secondary transition-all">MBBS in Uzbekistan</a></li>
+                        <li><a href="georgia.html" class="hover:text-secondary transition-all">MBBS in Georgia</a></li>
+                        <li><a href="nepal.html" class="hover:text-secondary transition-all">MBBS in Nepal</a></li>
+                        <li><a href="vietnam.html" class="hover:text-secondary transition-all">MBBS in Vietnam</a></li>
+                        <li><a href="tajikistan.html" class="hover:text-secondary transition-all">MBBS in Tajikistan</a></li>
+                        <li><a href="russia.html" class="hover:text-secondary transition-all">MBBS in Russia</a></li>
+                        <li><a href="kazakhstan.html" class="hover:text-secondary transition-all">MBBS in Kazakhstan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <p><i class="fas fa-phone-alt mr-2 text-secondary"></i> +91-9058501818</p>
+                        <p><i class="fas fa-envelope mr-2 text-secondary"></i> admissionintermost@gmail.com</p>
+                        <p><i class="fab fa-whatsapp mr-2 text-secondary"></i> WhatsApp: +91-9058501818</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center text-sm">
+                <p>© 2023 Intermost Ventures Study Abroad / Ekam Marketing and Innovation Solutions FZ-LLC, UAE. All Rights Reserved.</p>
+                <div class="mt-2">
+                    <a href="privacy.html" class="hover:text-secondary mr-4 transition-all">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-secondary mr-4 transition-all">Terms of Service</a>
+                    <a href="disclaimer.html" class="hover:text-secondary transition-all">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919876543210" class="floating-btn bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Toggle mobile menu
+    document.getElementById('menu-btn').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Accordion functionality for FAQs
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        
+        // Toggle the content
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.classList.remove('transform', 'rotate-180');
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.add('transform', 'rotate-180');
+        }
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
