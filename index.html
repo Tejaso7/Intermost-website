@@ -291,6 +291,31 @@
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
     <style>
+
+
+        /* Mobile overflow fix */
+@media (max-width: 767px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .hero-bg video {
+    left: 0;
+    transform: none;
+  }
+  
+  .country-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+        
         /* Add these new animations */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
