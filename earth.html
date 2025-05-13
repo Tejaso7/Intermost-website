@@ -7,10 +7,7 @@
     <script src="https://cdn.tailwindcss.com "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js "></script>
     <script src="https://cdn.jsdelivr.net/npm/three @0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three @0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css ">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/examples/js/controls/OrbitControls.min.js "></script>
     <style>
         body {
             margin: 0;
@@ -244,9 +241,10 @@
             <p>Loading 3D Earth...</p>
         </div>
     </div>
+
     <script>
-        // MBBS colleges data with coordinates and details
         const colleges = [
+            // RUSSIA
             {
                 name: "MEPhI (Moscow Engineering Physics Institute University)",
                 location: "Moscow, Russia",
@@ -255,15 +253,8 @@
                 duration: "6 Years",
                 fees: "₹2.2 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Globally Recognized Degrees",
-                    "Advanced Infrastructure",
-                    "European Standard Education",
-                    "High Quality Training",
-                    "Affordable Living Costs"
-                ],
-                website: "#",
-                info: "One of Russia's top technical universities offering world-class medical education with state-of-the-art facilities."
+                benefits: ["Globally Recognized Degrees", "Advanced Infrastructure", "European Standard Education", "High Quality Training", "Affordable Living Costs"],
+                info: "One of Russia's top technical universities offering world-class medical education."
             },
             {
                 name: "Ryazan State Medical University",
@@ -273,15 +264,7 @@
                 duration: "6 Years",
                 fees: "₹2.0 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Offers one of the most affordable MBBS programs in Russia with WHO and MCI recognition."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "Ivanovo State Medical University",
@@ -291,15 +274,7 @@
                 duration: "6 Years",
                 fees: "₹2.1 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Provides quality medical education with a strong focus on practical training."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "Voronezh State Medical University",
@@ -309,15 +284,7 @@
                 duration: "6 Years",
                 fees: "₹2.0 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Offers internationally recognized degrees with English medium instruction."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "Yaroslavl State Medical University",
@@ -327,15 +294,7 @@
                 duration: "6 Years",
                 fees: "₹2.1 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "A leading medical university in central Russia with modern teaching methods."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "North Caucasian State Academy",
@@ -345,15 +304,7 @@
                 duration: "6 Years",
                 fees: "₹2.0 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Offers quality medical education in southern Russia with cultural similarities to India."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "Bashkir State Medical University",
@@ -363,15 +314,7 @@
                 duration: "6 Years",
                 fees: "₹2.1 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "One of the oldest medical universities in Russia with a rich history of medical education."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "East European University (Authorized Representative)",
@@ -381,15 +324,7 @@
                 duration: "6 Years",
                 fees: "₹2.0 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Authorized representative for East European University providing access to multiple medical programs."
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
             },
             {
                 name: "Batumi International University (Authorized Representative)",
@@ -399,16 +334,10 @@
                 duration: "6 Years",
                 fees: "₹2.2 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "#",
-                info: "Authorized representative for Batumi International University offering European standard education."
+                benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
             },
+
+            // UZBEKISTAN
             {
                 name: "Tashkent State Medical University",
                 location: "Tashkent, Uzbekistan",
@@ -417,15 +346,7 @@
                 duration: "5 Years",
                 fees: "₹1.8 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Offers a direct 5-year MD program (equivalent to MBBS) with modern teaching methods and facilities."
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
             },
             {
                 name: "Samarkand State Medical Institute",
@@ -435,15 +356,7 @@
                 duration: "5 Years",
                 fees: "₹1.7 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Historic city with modern medical education facilities offering an accelerated MBBS equivalent program."
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
             },
             {
                 name: "Andijan State Medical University",
@@ -453,15 +366,7 @@
                 duration: "5 Years",
                 fees: "₹1.6 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Offers affordable medical education with a shorter duration program compared to traditional MBBS."
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
             },
             {
                 name: "Fergana Medical Institute of Public Health",
@@ -471,15 +376,7 @@
                 duration: "5 Years",
                 fees: "₹1.7 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Specializes in public health education while maintaining comprehensive medical training."
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
             },
             {
                 name: "Bukhara State Medical Institute",
@@ -489,15 +386,7 @@
                 duration: "5 Years",
                 fees: "₹1.6 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Ancient city with modern medical education facilities offering an accelerated MBBS equivalent program."
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
             },
             {
                 name: "EKAM Marketing and Innovation Solutions FZ-LLC (UAE) (Authorized Representative)",
@@ -507,16 +396,10 @@
                 duration: "6 Years",
                 fees: "Varies",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Multiple University Partnerships",
-                    "Comprehensive Support Services",
-                    "Global Placement Assistance",
-                    "Career Counseling",
-                    "Visa Processing Help"
-                ],
-                website: "#",
-                info: "Authorized representative offering access to multiple international medical universities through one platform."
+                benefits: ["Multiple University Partnerships", "Comprehensive Support Services", "Global Placement Assistance", "Career Counseling", "Visa Processing Help"]
             },
+
+            // NEPAL
             {
                 name: "B&C Medical College Teaching Hospital & Research Centre",
                 location: "Pokhara, Nepal",
@@ -525,15 +408,7 @@
                 duration: "5.5 Years",
                 fees: "₹2.5 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Similar Culture & Environment",
-                    "No Language Barrier",
-                    "MCI Recognized",
-                    "Affordable Fees",
-                    "Easy Travel to India"
-                ],
-                website: "#",
-                info: "Offers quality medical education with cultural similarities to India and easy travel access."
+                benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
             },
             {
                 name: "Kathmandu Medical College & Hospital",
@@ -543,15 +418,7 @@
                 duration: "5.5 Years",
                 fees: "₹2.5 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Similar Culture & Environment",
-                    "No Language Barrier",
-                    "MCI Recognized",
-                    "Affordable Fees",
-                    "Easy Travel to India"
-                ],
-                website: "#",
-                info: "One of Nepal's premier medical institutions offering quality education with cultural similarities to India."
+                benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
             },
             {
                 name: "Devdaha Medical College & Research Institute Pvt. Ltd.",
@@ -561,15 +428,7 @@
                 duration: "5.5 Years",
                 fees: "₹2.4 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Similar Culture & Environment",
-                    "No Language Barrier",
-                    "MCI Recognized",
-                    "Affordable Fees",
-                    "Easy Travel to India"
-                ],
-                website: "#",
-                info: "Medical college located in the birthplace of Buddha offering quality medical education."
+                benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
             },
             {
                 name: "Chitwan Medical College & Hospital",
@@ -579,15 +438,7 @@
                 duration: "5.5 Years",
                 fees: "₹2.4 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Similar Culture & Environment",
-                    "No Language Barrier",
-                    "MCI Recognized",
-                    "Affordable Fees",
-                    "Easy Travel to India"
-                ],
-                website: "#",
-                info: "Located in the subtropical region of Nepal with excellent clinical exposure opportunities."
+                benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
             },
             {
                 name: "Janaki Medical College & Teaching Hospital",
@@ -597,16 +448,10 @@
                 duration: "5.5 Years",
                 fees: "₹2.3 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Similar Culture & Environment",
-                    "No Language Barrier",
-                    "MCI Recognized",
-                    "Affordable Fees",
-                    "Easy Travel to India"
-                ],
-                website: "#",
-                info: "Medical college in southern Nepal with cultural similarities to northern India."
+                benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
             },
+
+            // GEORGIA
             {
                 name: "Caucasus University",
                 location: "Batumi, Georgia",
@@ -615,15 +460,7 @@
                 duration: "6 Years",
                 fees: "₹2.1 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "#",
-                info: "Offers European standard education with English medium instruction and USMLE preparation."
+                benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
             },
             {
                 name: "Georgian National University – SEU",
@@ -633,15 +470,7 @@
                 duration: "6 Years",
                 fees: "₹2.2 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "#",
-                info: "Private university offering European standard education with English medium instruction."
+                benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
             },
             {
                 name: "Alte University",
@@ -651,177 +480,7 @@
                 duration: "6 Years",
                 fees: "₹2.0 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "#",
-                info: "Newer university offering innovative approaches to medical education with English medium instruction."
-            },
-            {
-                name: "Dai Nam University",
-                location: "Dong Nai, Vietnam",
-                coordinates: { lat: 10.9172, lng: 106.8767 },
-                flag: "https://flagcdn.com/w20/vn.png ",
-                duration: "6 Years",
-                fees: "₹1.5 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Vietnam National University offers one of the most affordable MBBS programs in Asia."
-            },
-            {
-                name: "Phan Chau Trinh University",
-                location: "Da Nang, Vietnam",
-                coordinates: { lat: 16.0544, lng: 108.2022 },
-                flag: "https://flagcdn.com/w20/vn.png ",
-                duration: "6 Years",
-                fees: "₹1.6 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Modern university in central Vietnam offering quality medical education at affordable prices."
-            },
-            {
-                name: "Can Tho University",
-                location: "Can Tho, Vietnam",
-                coordinates: { lat: 10.0444, lng: 105.7528 },
-                flag: "https://flagcdn.com/w20/vn.png ",
-                duration: "6 Years",
-                fees: "₹1.5 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Southern Vietnamese university offering quality medical education with cultural similarities to India."
-            },
-            {
-                name: "Ho Chi Minh City University",
-                location: "Ho Chi Minh City, Vietnam",
-                coordinates: { lat: 10.8231, lng: 106.6297 },
-                flag: "https://flagcdn.com/w20/vn.png ",
-                duration: "6 Years",
-                fees: "₹1.6 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Major metropolitan university offering quality medical education in southern Vietnam."
-            },
-            {
-                name: "Hanoi Medical University",
-                location: "Hanoi, Vietnam",
-                coordinates: { lat: 21.0285, lng: 105.8542 },
-                flag: "https://flagcdn.com/w20/vn.png ",
-                duration: "6 Years",
-                fees: "₹1.5 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "#",
-                info: "Vietnam's oldest and most prestigious medical university offering quality education."
-            },
-            {
-                name: "Kazakh National Medical University",
-                location: "Almaty, Kazakhstan",
-                coordinates: { lat: 43.2567, lng: 76.9289 },
-                flag: "https://flagcdn.com/w20/kz.png ",
-                duration: "5 Years",
-                fees: "₹2.0 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Leading medical university in Kazakhstan offering an accelerated MD program."
-            },
-            {
-                name: "West Kazakhstan Marat Ospanov State Medical University",
-                location: "Aktobe, Kazakhstan",
-                coordinates: { lat: 50.2917, lng: 57.1583 },
-                flag: "https://flagcdn.com/w20/kz.png ",
-                duration: "5 Years",
-                fees: "₹1.8 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "Medical university in western Kazakhstan offering quality education at affordable prices."
-            },
-            {
-                name: "Al-Farabi Kazakh National University",
-                location: "Almaty, Kazakhstan",
-                coordinates: { lat: 43.2567, lng: 76.9289 },
-                flag: "https://flagcdn.com/w20/kz.png ",
-                duration: "6 Years",
-                fees: "₹2.0 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Globally Recognized Degrees",
-                    "Advanced Infrastructure",
-                    "European Standard Education",
-                    "High Quality Training",
-                    "Affordable Living Costs"
-                ],
-                website: "#",
-                info: "Multi-disciplinary university with a strong medical faculty offering European standard education."
-            },
-            {
-                name: "Tajik National University",
-                location: "Dushanbe, Tajikistan",
-                coordinates: { lat: 38.5650, lng: 68.7800 },
-                flag: "https://flagcdn.com/w20/tj.png ",
-                duration: "5 Years",
-                fees: "₹1.5 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "#",
-                info: "The leading university in Tajikistan offering medical education with Indian student support services."
+                benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
             },
             {
                 name: "Tbilisi State Medical University",
@@ -831,15 +490,7 @@
                 duration: "6 Years",
                 fees: "₹2.2 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "#",
-                info: "Georgia's leading medical university offering European standard education with English medium instruction."
+                benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
             },
             {
                 name: "International Black Sea University",
@@ -849,113 +500,184 @@
                 duration: "6 Years",
                 fees: "₹2.1 Lakh/Semester",
                 eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "#",
-                info: "International university offering diverse student population and modern educational facilities."
+                benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+            },
+
+            // VIETNAM
+            {
+                name: "Dai Nam University",
+                location: "Dong Nai, Vietnam",
+                coordinates: { lat: 10.9172, lng: 106.8767 },
+                flag: "https://flagcdn.com/w20/vn.png ",
+                duration: "6 Years",
+                fees: "₹1.5 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+            },
+            {
+                name: "Phan Chau Trinh University",
+                location: "Da Nang, Vietnam",
+                coordinates: { lat: 16.0544, lng: 108.2022 },
+                flag: "https://flagcdn.com/w20/vn.png ",
+                duration: "6 Years",
+                fees: "₹1.6 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+            },
+            {
+                name: "Can Tho University",
+                location: "Can Tho, Vietnam",
+                coordinates: { lat: 10.0444, lng: 105.7528 },
+                flag: "https://flagcdn.com/w20/vn.png ",
+                duration: "6 Years",
+                fees: "₹1.5 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+            },
+            {
+                name: "Ho Chi Minh City University",
+                location: "Ho Chi Minh City, Vietnam",
+                coordinates: { lat: 10.8231, lng: 106.6297 },
+                flag: "https://flagcdn.com/w20/vn.png ",
+                duration: "6 Years",
+                fees: "₹1.6 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+            },
+            {
+                name: "Hanoi Medical University",
+                location: "Hanoi, Vietnam",
+                coordinates: { lat: 21.0285, lng: 105.8542 },
+                flag: "https://flagcdn.com/w20/vn.png ",
+                duration: "6 Years",
+                fees: "₹1.5 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+            },
+
+            // KAZAKHSTAN
+            {
+                name: "Kazakh National Medical University",
+                location: "Almaty, Kazakhstan",
+                coordinates: { lat: 43.2567, lng: 76.9289 },
+                flag: "https://flagcdn.com/w20/kz.png ",
+                duration: "5 Years",
+                fees: "₹2.0 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+            },
+            {
+                name: "West Kazakhstan Marat Ospanov State Medical University",
+                location: "Aktobe, Kazakhstan",
+                coordinates: { lat: 50.2917, lng: 57.1583 },
+                flag: "https://flagcdn.com/w20/kz.png ",
+                duration: "5 Years",
+                fees: "₹1.8 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+            },
+            {
+                name: "Al-Farabi Kazakh National University",
+                location: "Almaty, Kazakhstan",
+                coordinates: { lat: 43.2567, lng: 76.9289 },
+                flag: "https://flagcdn.com/w20/kz.png ",
+                duration: "6 Years",
+                fees: "₹2.0 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["Globally Recognized Degrees", "Advanced Infrastructure", "European Standard Education", "High Quality Training", "Affordable Living Costs"]
+            },
+
+            // TAJIKISTAN
+            {
+                name: "Tajik National University",
+                location: "Dushanbe, Tajikistan",
+                coordinates: { lat: 38.5650, lng: 68.7800 },
+                flag: "https://flagcdn.com/w20/tj.png ",
+                duration: "5 Years",
+                fees: "₹1.5 Lakh/Semester",
+                eligibility: "50% in PCB, NEET Qualified",
+                benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
             }
         ];
-        
-        // Three.js variables
+
         let scene, camera, renderer, earth, controls;
         const markers = [];
         let raycaster = new THREE.Raycaster();
         let mouse = new THREE.Vector2();
         let activeCountry = null;
-        
-        // Initialize the 3D Earth
+
         function init() {
-            // Create scene
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x000000);
-            
-            // Create camera
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 2;
-            
-            // Create renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('earth-container').appendChild(renderer.domElement);
-            
-            // Add controls
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.05;
-            controls.minDistance = 1.5;
-            controls.maxDistance = 5;
-            controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.5;
-            
-            // Add ambient light
-            const ambientLight = new THREE.AmbientLight(0x404040);
-            scene.add(ambientLight);
-            
-            // Add directional light
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
-            
-            // Create Earth
-            const geometry = new THREE.SphereGeometry(1, 64, 64);
-            const textureLoader = new THREE.TextureLoader();
-            const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg ');
-            const bumpMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg ');
-            const specularMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg ');
-            
-            const material = new THREE.MeshPhongMaterial({
-                map: earthTexture,
-                bumpMap: bumpMap,
-                bumpScale: 0.05,
-                specularMap: specularMap,
-                specular: new THREE.Color('grey'),
-                shininess: 5
-            });
-            
-            earth = new THREE.Mesh(geometry, material);
-            scene.add(earth);
-            
-            // Add stars
-            addStars();
-            
-            // Add markers for colleges
-            addCollegeMarkers();
-            
-            // Create country selector buttons
-            createCountrySelector();
-            
-            // Hide loading screen
-            document.getElementById('loading').style.display = 'none';
-            
-            // Add event listeners
-            window.addEventListener('resize', onWindowResize);
-            renderer.domElement.addEventListener('click', onCanvasClick);
-            document.getElementById('close-info').addEventListener('click', () => {
-                document.getElementById('info-panel').style.display = 'none';
-            });
-            document.getElementById('search-btn').addEventListener('click', searchCollege);
-            document.getElementById('search-input').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') searchCollege();
-            });
-            
-            // Start animation loop
-            animate();
+            try {
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0x000000);
+
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 2;
+
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('earth-container').appendChild(renderer.domElement);
+
+                controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.05;
+                controls.minDistance = 1.5;
+                controls.maxDistance = 5;
+                controls.autoRotate = true;
+                controls.autoRotateSpeed = 0.5;
+
+                const ambientLight = new THREE.AmbientLight(0x404040);
+                scene.add(ambientLight);
+
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+                directionalLight.position.set(1, 1, 1);
+                scene.add(directionalLight);
+
+                const geometry = new THREE.SphereGeometry(1, 64, 64);
+                const textureLoader = new THREE.TextureLoader();
+
+                const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg ');
+                const bumpMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg ');
+                const specularMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg ');
+
+                const material = new THREE.MeshPhongMaterial({
+                    map: earthTexture,
+                    bumpMap: bumpMap,
+                    bumpScale: 0.05,
+                    specularMap: specularMap,
+                    specular: new THREE.Color('grey'),
+                    shininess: 5
+                });
+
+                earth = new THREE.Mesh(geometry, material);
+                scene.add(earth);
+
+                addStars();
+                addCollegeMarkers();
+                createCountrySelector();
+
+                document.getElementById('loading').style.display = 'none';
+
+                window.addEventListener('resize', onWindowResize);
+                renderer.domElement.addEventListener('click', onCanvasClick);
+                document.getElementById('close-info').addEventListener('click', () => {
+                    document.getElementById('info-panel').style.display = 'none';
+                });
+                document.getElementById('search-btn').addEventListener('click', searchCollege);
+                document.getElementById('search-input').addEventListener('keypress', e => {
+                    if (e.key === 'Enter') searchCollege();
+                });
+
+                animate();
+            } catch (error) {
+                console.error("Initialization failed:", error);
+                document.getElementById('loading').innerHTML = '<p>Error loading 3D Earth. Check console for details.</p>';
+            }
         }
-        
-        // Add stars to the scene
+
         function addStars() {
             const starsGeometry = new THREE.BufferGeometry();
-            const starsMaterial = new THREE.PointsMaterial({
-                color: 0xffffff,
-                size: 0.02,
-                transparent: true
-            });
-            
+            const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true });
             const starsVertices = [];
             for (let i = 0; i < 10000; i++) {
                 const x = (Math.random() - 0.5) * 2000;
@@ -963,18 +685,15 @@
                 const z = (Math.random() - 0.5) * 2000;
                 starsVertices.push(x, y, z);
             }
-            
             starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
             const stars = new THREE.Points(starsGeometry, starsMaterial);
             scene.add(stars);
         }
-        
-        // Create country selector buttons
+
         function createCountrySelector() {
             const container = document.getElementById('country-buttons');
-            const countries = [...new Set(colleges.map(c => c.location.split(', ')[1])];
-            
-            // Add "All Countries" option
+            const countries = [...new Set(colleges.map(c => c.location.split(', ')[1]))];
+
             const allBtn = document.createElement('div');
             allBtn.className = 'country-btn active';
             allBtn.innerHTML = '<i class="fas fa-globe mr-2"></i> All Countries';
@@ -985,8 +704,7 @@
                 updateMarkerVisibility();
             });
             container.appendChild(allBtn);
-            
-            // Add country buttons
+
             countries.forEach(country => {
                 const college = colleges.find(c => c.location.includes(country));
                 const btn = document.createElement('div');
@@ -997,18 +715,13 @@
                     btn.classList.add('active');
                     activeCountry = country;
                     updateMarkerVisibility();
-                    
-                    // Fly to the country
                     const collegeInCountry = colleges.find(c => c.location.includes(country));
-                    if (collegeInCountry) {
-                        showCollegeInfo(collegeInCountry);
-                    }
+                    if (collegeInCountry) showCollegeInfo(collegeInCountry);
                 });
                 container.appendChild(btn);
             });
         }
-        
-        // Update marker visibility based on selected country
+
         function updateMarkerVisibility() {
             markers.forEach(marker => {
                 const college = marker.userData;
@@ -1019,100 +732,64 @@
                 }
             });
         }
-        
-        // Add markers for MBBS colleges
+
         function addCollegeMarkers() {
             colleges.forEach(college => {
-                // Convert lat/lng to 3D position
                 const phi = (90 - college.coordinates.lat) * (Math.PI / 180);
                 const theta = (college.coordinates.lng + 180) * (Math.PI / 180);
-                
                 const x = -Math.sin(phi) * Math.cos(theta);
                 const y = Math.cos(phi);
                 const z = Math.sin(phi) * Math.sin(theta);
-                
-                // Create marker (small sphere)
+
                 const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
-                const markerMaterial = new THREE.MeshBasicMaterial({ 
-                    color: 0x3B82F6,
-                    transparent: true,
-                    opacity: 0.8
-                });
-                
+                const markerMaterial = new THREE.MeshBasicMaterial({ color: 0x3B82F6, transparent: true, opacity: 0.8 });
                 const markerMesh = new THREE.Mesh(markerGeometry, markerMaterial);
-                
-                // Position marker slightly above Earth's surface
                 markerMesh.position.set(x * 1.02, y * 1.02, z * 1.02);
-                
-                // Store college data in marker
                 markerMesh.userData = college;
-                
-                // Add marker to scene
                 scene.add(markerMesh);
                 markers.push(markerMesh);
-                
-                // Create HTML marker (for tooltip)
+
                 const htmlMarker = document.createElement('div');
                 htmlMarker.className = 'marker';
                 htmlMarker.dataset.college = college.name;
                 document.getElementById('earth-container').appendChild(htmlMarker);
-                
-                // Add tooltip
+
                 const tooltip = document.createElement('div');
                 tooltip.className = 'tooltip';
                 tooltip.textContent = college.name;
                 htmlMarker.appendChild(tooltip);
-                
-                // Update HTML marker position on render
-                htmlMarker.updatePosition = function() {
+
+                htmlMarker.updatePosition = function () {
                     const vector = new THREE.Vector3(
                         markerMesh.position.x,
                         markerMesh.position.y,
                         markerMesh.position.z
                     );
                     vector.project(camera);
-                    
                     const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
                     const y = (-(vector.y * 0.5) + 0.5) * window.innerHeight;
-                    
                     htmlMarker.style.left = x + 'px';
                     htmlMarker.style.top = y + 'px';
-                    
-                    // Position tooltip above marker
-                    tooltip.style.left = '50%';
-                    tooltip.style.transform = 'translateX(-50%) translateY(-100%) translateY(-10px)';
-                    
-                    // Improved visibility check - only show if facing camera
+
                     const cameraDirection = new THREE.Vector3();
                     camera.getWorldDirection(cameraDirection);
-                    
                     const markerDirection = markerMesh.position.clone().normalize();
                     const dotProduct = cameraDirection.dot(markerDirection);
-                    
-                    // Only show if the marker is on the front side (dot product > 0)
-                    // Also check if it's within the viewport
-                    const isVisible = dotProduct > 0 && 
-                                     x >= 0 && x <= window.innerWidth && 
-                                     y >= 0 && y <= window.innerHeight;
-                    htmlMarker.style.display = isVisible ? 'block' : 'none';
+                    htmlMarker.style.display = dotProduct > 0 && x >= 0 && y >= 0 && x <= window.innerWidth && y <= window.innerHeight ? 'block' : 'none';
                 };
-                
-                // Add click event to HTML marker
-                htmlMarker.addEventListener('click', (e) => {
+
+                htmlMarker.addEventListener('click', e => {
                     e.stopPropagation();
                     showCollegeInfo(college);
                 });
-                
-                // Store reference to update position later
+
                 markerMesh.htmlMarker = htmlMarker;
             });
         }
-        
-        // Show college information in panel
+
         function showCollegeInfo(college) {
             const infoPanel = document.getElementById('info-panel');
             const collegeInfo = document.getElementById('college-info');
-            
             collegeInfo.innerHTML = `
                 <div class="college-name flex items-center">
                     <img src="${college.flag}" class="flag-icon mr-2">${college.name}
@@ -1134,20 +811,10 @@
                     <ul class="benefits-list">
                         ${college.benefits.map(benefit => `<li class="benefit-item">${benefit}</li>`).join('')}
                     </ul>
-                    ${college.website !== "#" ? `<div class="mt-4">
-                        <a href="${college.website}" target="_blank" class="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 inline-block text-sm">
-                            <i class="fas fa-external-link-alt mr-1"></i> Visit Website
-                        </a>
-                    </div>` : ""}
-                    <div class="mt-3 text-sm text-gray-300">
-                        ${college.info}
-                    </div>
                 </div>
             `;
-            
             infoPanel.style.display = 'block';
-            
-            // Fly to the college location
+
             const phi = (90 - college.coordinates.lat) * (Math.PI / 180);
             const theta = (college.coordinates.lng + 180) * (Math.PI / 180);
             controls.autoRotate = false;
@@ -1157,65 +824,41 @@
                 Math.sin(phi) * Math.sin(theta) * 1.02
             );
         }
-        
-        // Search for colleges
+
         function searchCollege() {
             const query = document.getElementById('search-input').value.toLowerCase();
             if (!query) return;
-            
             const found = colleges.find(college => 
                 college.name.toLowerCase().includes(query) || 
                 college.location.toLowerCase().includes(query)
             );
-            
-            if (found) {
-                showCollegeInfo(found);
-            } else {
-                alert('No MBBS college found with that name or location.');
-            }
+            if (found) showCollegeInfo(found);
+            else alert('No MBBS college found with that name or location.');
         }
-        
-        // Handle canvas click
+
         function onCanvasClick(event) {
-            // Calculate mouse position in normalized device coordinates
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-            
-            // Update the raycaster
             raycaster.setFromCamera(mouse, camera);
-            
-            // Calculate objects intersecting the picking ray
             const intersects = raycaster.intersectObjects(markers);
-            
-            if (intersects.length > 0) {
-                // Show info for the first intersected marker
-                showCollegeInfo(intersects[0].object.userData);
-            }
+            if (intersects.length > 0) showCollegeInfo(intersects[0].object.userData);
         }
-        
-        // Handle window resize
+
         function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         }
-        
-        // Animation loop
+
         function animate() {
             requestAnimationFrame(animate);
             controls.update();
-            
-            // Update HTML marker positions
             markers.forEach(marker => {
-                if (marker.htmlMarker) {
-                    marker.htmlMarker.updatePosition();
-                }
+                if (marker.htmlMarker) marker.htmlMarker.updatePosition();
             });
-            
             renderer.render(scene, camera);
         }
-        
-        // Start the application
+
         init();
     </script>
 </body>
