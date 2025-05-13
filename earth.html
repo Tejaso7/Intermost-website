@@ -1,726 +1,1191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Earth - MBBS Colleges Abroad</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        #earth-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-        #info-panel {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            max-width: 350px;
-            backdrop-filter: blur(5px);
-            z-index: 100;
-            display: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        #search-box {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 12px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-        }
-        .marker {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background-color: #3B82F6;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-            border: 2px solid white;
-        }
-        .marker:hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.7);
-            background-color: #EF4444;
-        }
-        .marker::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(59, 130, 246, 0.4);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            70% {
-                transform: scale(2.5);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0;
-            }
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            color: white;
-            font-size: 1.2rem;
-        }
-        .college-card {
-            margin-top: 10px;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            border-left: 3px solid #3B82F6;
-        }
-        .college-name {
-            font-weight: bold;
-            color: #3B82F6;
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-        }
-        .college-location {
-            font-size: 0.95em;
-            color: #ddd;
-            margin-bottom: 8px;
-        }
-        .college-detail {
-            font-size: 0.9em;
-            color: #ccc;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-        }
-        .detail-label {
-            color: #3B82F6;
-            font-weight: 500;
-            margin-right: 5px;
-        }
-        .benefits-list {
-            margin-top: 10px;
-            padding-left: 15px;
-        }
-        .benefit-item {
-            position: relative;
-            margin-bottom: 6px;
-            color: #eee;
-            font-size: 0.9em;
-        }
-        .benefit-item::before {
-            content: '✓';
-            color: #10B981;
-            margin-right: 8px;
-        }
-        .flag-icon {
-            width: 20px;
-            height: 15px;
-            margin-right: 8px;
-            border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-        #loading {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            z-index: 1000;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #3B82F6;
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        #country-selector {
-            position: absolute;
-            top: 100px;
-            left: 20px;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 12px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            max-height: 60vh;
-            overflow-y: auto;
-        }
-        .country-btn {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            margin: 4px 0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .country-btn:hover {
-            background: #EFF6FF;
-        }
-        .country-btn.active {
-            background: #3B82F6;
-            color: white;
-        }
-        .tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            z-index: 1000;
-            pointer-events: none;
-            transform: translateY(-100%) translateY(-10px);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        .marker:hover .tooltip {
-            opacity: 1;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Earth - MBBS Colleges Abroad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    #earth-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    
+    #info-panel {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(15, 23, 42, 0.9);
+      color: white;
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 350px;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    #info-panel.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    #search-box {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    #search-box:focus-within {
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+    }
+    
+    .marker {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: #3B82F6;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+      border: 2px solid white;
+    }
+    
+    .marker:hover {
+      transform: translate(-50%, -50%) scale(1.5);
+      box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.7);
+      background-color: #EF4444;
+    }
+    
+    .marker::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: rgba(59, 130, 246, 0.4);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(2.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+    
+    .close-btn:hover {
+      color: #EF4444;
+      transform: scale(1.1);
+    }
+    
+    .college-card {
+      margin-top: 10px;
+      padding: 12px;
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 8px;
+      border-left: 3px solid #3B82F6;
+      transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+      background: rgba(30, 41, 59, 0.8);
+      transform: translateX(5px);
+    }
+    
+    .college-name {
+      font-weight: bold;
+      color: #3B82F6;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+    
+    .college-location {
+      font-size: 0.95em;
+      color: #ddd;
+      margin-bottom: 8px;
+    }
+    
+    .college-detail {
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .detail-label {
+      color: #3B82F6;
+      font-weight: 500;
+      margin-right: 5px;
+      min-width: 80px;
+    }
+    
+    .benefits-list {
+      margin-top: 10px;
+      padding-left: 15px;
+    }
+    
+    .benefit-item {
+      position: relative;
+      margin-bottom: 6px;
+      color: #eee;
+      font-size: 0.9em;
+      padding-left: 20px;
+    }
+    
+    .benefit-item::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10B981;
+      margin-right: 8px;
+    }
+    
+    .flag-icon {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    #loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 1000;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #3B82F6;
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    #country-selector {
+      position: absolute;
+      top: 100px;
+      left: 20px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      max-height: 60vh;
+      overflow-y: auto;
+      width: 250px;
+      transform: translateX(-20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    #country-selector.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    
+    .country-btn {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    .country-btn:hover {
+      background: #EFF6FF;
+    }
+    
+    .country-btn.active {
+      background: #3B82F6;
+      color: white;
+    }
+    
+    .tooltip {
+      position: absolute;
+      background: rgba(15, 23, 42, 0.95);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      z-index: 1000;
+      pointer-events: none;
+      transform: translateY(-100%) translateY(-10px);
+      opacity: 0;
+      transition: opacity 0.2s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .marker:hover .tooltip {
+      opacity: 1;
+    }
+    
+    #toggle-country {
+      position: absolute;
+      top: 80px;
+      left: 20px;
+      z-index: 100;
+      background: #3B82F6;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    #toggle-country:hover {
+      background: #2563EB;
+      transform: scale(1.1);
+    }
+    
+    #search-results {
+      position: absolute;
+      top: 70px;
+      left: 20px;
+      z-index: 100;
+      background: white;
+      width: 300px;
+      max-height: 300px;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      display: none;
+    }
+    
+    .search-result-item {
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .search-result-item:hover {
+      background: #f5f5f5;
+    }
+    
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    
+    .glow {
+      animation: glow 2s infinite alternate;
+    }
+    
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 5px -5px #3B82F6;
+      }
+      to {
+        box-shadow: 0 0 20px 5px #3B82F6;
+      }
+    }
+    
+    #stats-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.9);
+      color: white;
+      padding: 16px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .stat-item {
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .stat-value {
+      font-weight: bold;
+      color: #3B82F6;
+    }
+  </style>
 </head>
 <body>
-    <div id="earth-container">
-        <div id="search-box">
-            <input type="text" id="search-input" placeholder="Search MBBS colleges..." class="px-3 py-2 border rounded w-64 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button id="search-btn" class="ml-2 px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-        
-        <div id="country-selector">
-            <h3 class="font-bold mb-2 text-gray-700">Filter by Country:</h3>
-            <div id="country-buttons"></div>
-        </div>
-        
-        <div id="info-panel">
-            <span class="close-btn" id="close-info"><i class="fas fa-times"></i></span>
-            <div id="college-info"></div>
-        </div>
-        
-        <div id="loading">
-            <div class="spinner"></div>
-            <p>Loading 3D Earth...</p>
-        </div>
+  <div id="earth-container">
+    <div id="search-box" class="glow">
+      <input type="text" id="search-input" placeholder="Search MBBS colleges..." 
+             class="px-4 py-2 border-0 rounded-lg w-64 focus:outline-none focus:ring-0 text-gray-800">
+      <button id="search-btn" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
+    
+    <div id="search-results"></div>
+    
+    <button id="toggle-country">
+      <i class="fas fa-globe"></i>
+    </button>
+    
+    <div id="country-selector">
+      <h3 class="font-bold mb-3 text-gray-800">Filter by Country:</h3>
+      <div id="country-buttons"></div>
+    </div>
+    
+    <div id="info-panel">
+      <span class="close-btn" id="close-info"><i class="fas fa-times"></i></span>
+      <div id="college-info"></div>
+    </div>
+    
+    <div id="stats-panel">
+      <div class="stat-item">Total Colleges: <span class="stat-value" id="total-colleges">0</span></div>
+      <div class="stat-item">Countries: <span class="stat-value" id="total-countries">0</span></div>
+      <div class="stat-item">Selected: <span class="stat-value" id="selected-country">All</span></div>
+    </div>
+    
+    <div id="loading">
+      <div class="spinner"></div>
+      <p class="text-xl mt-4">Exploring Global MBBS Opportunities...</p>
+      <p class="text-sm text-gray-400 mt-2">Loading 3D Earth visualization</p>
+    </div>
+  </div>
 
-    <script>
-        // MBBS colleges data with coordinates and details
-        const colleges = [
-            {
-                name: "Vietnam National University",
-                location: "Hanoi, Vietnam",
-                coordinates: { lat: 21.0285, lng: 105.8542 },
-                flag: "https://flagcdn.com/w20/vn.png",
-                duration: "6 Years",
-                fees: "₹1.5 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "WHO & MCI Approved",
-                    "English Medium",
-                    "Low Cost of Living",
-                    "Modern Infrastructure",
-                    "Cultural Similarities"
-                ],
-                website: "https://vnu.edu.vn",
-                info: "Vietnam National University offers one of the most affordable MBBS programs in Asia with WHO and MCI recognition. The curriculum follows international standards with English as the medium of instruction."
-            },
-            {
-                name: "Moscow State Medical University",
-                location: "Moscow, Russia",
-                coordinates: { lat: 55.7512, lng: 37.6184 },
-                flag: "https://flagcdn.com/w20/ru.png",
-                duration: "6 Years",
-                fees: "₹2.2 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Globally Recognized Degrees",
-                    "Advanced Infrastructure",
-                    "European Standard Education",
-                    "High Quality Training",
-                    "Affordable Living Costs"
-                ],
-                website: "https://msmu.ru",
-                info: "One of Russia's top medical universities with over 240 years of history. Offers world-class medical education with state-of-the-art facilities and internationally recognized degrees."
-            },
-            {
-                name: "Tbilisi State Medical University",
-                location: "Tbilisi, Georgia",
-                coordinates: { lat: 41.7151, lng: 44.8271 },
-                flag: "https://flagcdn.com/w20/ge.png",
-                duration: "6 Years",
-                fees: "₹2.0 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "USMLE Preparation",
-                    "European Education Standard",
-                    "Safe Environment",
-                    "English Medium",
-                    "WHO Recognized"
-                ],
-                website: "https://tsmu.edu",
-                info: "Georgia's leading medical university offering European standard education with English medium instruction. The curriculum includes USMLE preparation for students aiming to practice in the US."
-            },
-            {
-                name: "Tashkent Medical Academy",
-                location: "Tashkent, Uzbekistan",
-                coordinates: { lat: 41.2995, lng: 69.2401 },
-                flag: "https://flagcdn.com/w20/uz.png",
-                duration: "5 Years",
-                fees: "₹1.8 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "5-Year Direct MD Program",
-                    "Low Tuition Fees",
-                    "Modern Facilities",
-                    "MCI Approved",
-                    "English Medium"
-                ],
-                website: "https://tma.uz",
-                info: "Offers a direct 5-year MD program (equivalent to MBBS) with modern teaching methods and facilities. The university is recognized by MCI and WHO, making graduates eligible to practice in India."
-            },
-            {
-                name: "Kathmandu Medical College",
-                location: "Kathmandu, Nepal",
-                coordinates: { lat: 27.7172, lng: 85.3240 },
-                flag: "https://flagcdn.com/w20/np.png",
-                duration: "5.5 Years",
-                fees: "₹2.5 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "Similar Culture & Environment",
-                    "No Language Barrier",
-                    "MCI Recognized",
-                    "Affordable Fees",
-                    "Easy Travel to India"
-                ],
-                website: "https://kmc.edu.np",
-                info: "One of Nepal's premier medical institutions offering quality education with cultural similarities to India. The curriculum is recognized by MCI and the degree is valid for practice in India."
-            },
-            {
-                name: "Baku Medical University",
-                location: "Baku, Azerbaijan",
-                coordinates: { lat: 40.4093, lng: 49.8671 },
-                flag: "https://flagcdn.com/w20/az.png",
-                duration: "6 Years",
-                fees: "₹2.1 Lakh/Semester",
-                eligibility: "50% in PCB, NEET Qualified",
-                benefits: [
-                    "European Standard Education",
-                    "English Medium",
-                    "Affordable Fees",
-                    "WHO Recognized",
-                    "Modern Teaching Methods"
-                ],
-                website: "https://amu.edu.az",
-                info: "Azerbaijan's leading medical university offering European standard education with English as the medium of instruction. The university is recognized by WHO and has modern teaching facilities."
-            }
-        ];
+  <script>
+    const colleges = [
+      // RUSSIA
+      {
+        name: "MEPhI (Moscow Engineering Physics Institute University)",
+        location: "Moscow, Russia",
+        coordinates: { lat: 55.7512, lng: 37.6184 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.2 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Globally Recognized Degrees", "Advanced Infrastructure", "European Standard Education", "High Quality Training", "Affordable Living Costs"],
+        info: "One of Russia's top technical universities offering world-class medical education."
+      },
+      {
+        name: "Ryazan State Medical University",
+        location: "Ryazan, Russia",
+        coordinates: { lat: 54.6292, lng: 39.7145 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Ivanovo State Medical University",
+        location: "Ivanovo, Russia",
+        coordinates: { lat: 56.9975, lng: 40.9750 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.1 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Voronezh State Medical University",
+        location: "Voronezh, Russia",
+        coordinates: { lat: 51.6711, lng: 39.2083 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Yaroslavl State Medical University",
+        location: "Yaroslavl, Russia",
+        coordinates: { lat: 57.6265, lng: 39.8935 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.1 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "North Caucasian State Academy",
+        location: "Stavropol, Russia",
+        coordinates: { lat: 45.0441, lng: 41.9985 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Bashkir State Medical University",
+        location: "Ufa, Russia",
+        coordinates: { lat: 54.7351, lng: 55.9589 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.1 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "East European University (Authorized Representative)",
+        location: "Krasnodar, Russia",
+        coordinates: { lat: 45.0399, lng: 38.9872 },
+        flag: "https://flagcdn.com/w20/ru.png",
+        duration: "6 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Batumi International University (Authorized Representative)",
+        location: "Batumi, Georgia",
+        coordinates: { lat: 41.6384, lng: 41.6304 },
+        flag: "https://flagcdn.com/w20/ge.png",
+        duration: "6 Years",
+        fees: "₹2.2 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+      },
+      // UZBEKISTAN
+      {
+        name: "Tashkent State Medical University",
+        location: "Tashkent, Uzbekistan",
+        coordinates: { lat: 41.2995, lng: 69.2401 },
+        flag: "https://flagcdn.com/w20/uz.png",
+        duration: "5 Years",
+        fees: "₹1.8 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "Samarkand State Medical Institute",
+        location: "Samarkand, Uzbekistan",
+        coordinates: { lat: 39.6583, lng: 66.9594 },
+        flag: "https://flagcdn.com/w20/uz.png",
+        duration: "5 Years",
+        fees: "₹1.7 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "Andijan State Medical University",
+        location: "Andijan, Uzbekistan",
+        coordinates: { lat: 40.7742, lng: 72.3344 },
+        flag: "https://flagcdn.com/w20/uz.png",
+        duration: "5 Years",
+        fees: "₹1.6 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "Fergana Medical Institute of Public Health",
+        location: "Fergana, Uzbekistan",
+        coordinates: { lat: 40.3866, lng: 71.7875 },
+        flag: "https://flagcdn.com/w20/uz.png",
+        duration: "5 Years",
+        fees: "₹1.7 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "Bukhara State Medical Institute",
+        location: "Bukhara, Uzbekistan",
+        coordinates: { lat: 39.7583, lng: 64.4394 },
+        flag: "https://flagcdn.com/w20/uz.png",
+        duration: "5 Years",
+        fees: "₹1.6 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "EKAM Marketing and Innovation Solutions FZ-LLC (UAE) (Authorized Representative)",
+        location: "Dubai, UAE",
+        coordinates: { lat: 25.2048, lng: 55.2708 },
+        flag: "https://flagcdn.com/w20/ae.png",
+        duration: "6 Years",
+        fees: "Varies",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Multiple University Partnerships", "Comprehensive Support Services", "Global Placement Assistance", "Career Counseling", "Visa Processing Help"]
+      },
+      // NEPAL
+      {
+        name: "B&C Medical College Teaching Hospital & Research Centre",
+        location: "Pokhara, Nepal",
+        coordinates: { lat: 28.2096, lng: 83.9849 },
+        flag: "https://flagcdn.com/w20/np.png",
+        duration: "5.5 Years",
+        fees: "₹2.5 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
+      },
+      {
+        name: "Kathmandu Medical College & Hospital",
+        location: "Kathmandu, Nepal",
+        coordinates: { lat: 27.7172, lng: 85.3240 },
+        flag: "https://flagcdn.com/w20/np.png",
+        duration: "5.5 Years",
+        fees: "₹2.5 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
+      },
+      {
+        name: "Devdaha Medical College & Research Institute Pvt. Ltd.",
+        location: "Lumbini, Nepal",
+        coordinates: { lat: 27.4861, lng: 83.3192 },
+        flag: "https://flagcdn.com/w20/np.png",
+        duration: "5.5 Years",
+        fees: "₹2.4 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
+      },
+      {
+        name: "Chitwan Medical College & Hospital",
+        location: "Chitwan, Nepal",
+        coordinates: { lat: 27.5975, lng: 84.4567 },
+        flag: "https://flagcdn.com/w20/np.png",
+        duration: "5.5 Years",
+        fees: "₹2.4 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
+      },
+      {
+        name: "Janaki Medical College & Teaching Hospital",
+        location: "Janakpur, Nepal",
+        coordinates: { lat: 26.7061, lng: 85.9344 },
+        flag: "https://flagcdn.com/w20/np.png",
+        duration: "5.5 Years",
+        fees: "₹2.3 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Similar Culture & Environment", "No Language Barrier", "MCI Recognized", "Affordable Fees", "Easy Travel to India"]
+      },
+      // GEORGIA
+      {
+        name: "Caucasus University",
+        location: "Batumi, Georgia",
+        coordinates: { lat: 41.6384, lng: 41.6304 },
+        flag: "https://flagcdn.com/w20/ge.png",
+        duration: "6 Years",
+        fees: "₹2.1 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+      },
+      {
+        name: "Georgian National University – SEU",
+        location: "Tbilisi, Georgia",
+        coordinates: { lat: 41.7151, lng: 44.8271 },
+        flag: "https://flagcdn.com/w20/ge.png",
+        duration: "6 Years",
+        fees: "₹2.2 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+      },
+      {
+        name: "Alte University",
+        location: "Tbilisi, Georgia",
+        coordinates: { lat: 41.7151, lng: 44.8271 },
+        flag: "https://flagcdn.com/w20/ge.png",
+        duration: "6 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+      },
+      {
+        name: "Tbilisi State Medical University",
+        location: "Tbilisi, Georgia",
+        coordinates: { lat: 41.7151, lng: 44.8271 },
+        flag: "https://flagcdn.com/w20/ge.png",
+        duration: "6 Years",
+        fees: "₹2.2 Lank/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+      },
+      {
+        name: "International Black Sea University",
+        location: "Batumi, Georgia",
+        coordinates: { lat: 41.6384, lng: 41.6304 },
+        flag: "https://flagcdn.com/w20/ge.png",
+        duration: "6 Years",
+        fees: "₹2.1 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["USMLE Preparation", "European Education Standard", "Safe Environment", "English Medium", "WHO Recognized"]
+      },
+      // VIETNAM
+      {
+        name: "Dai Nam University",
+        location: "Dong Nai, Vietnam",
+        coordinates: { lat: 10.9172, lng: 106.8767 },
+        flag: "https://flagcdn.com/w20/vn.png",
+        duration: "6 Years",
+        fees: "₹1.5 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Phan Chau Trinh University",
+        location: "Da Nang, Vietnam",
+        coordinates: { lat: 16.0544, lng: 108.2022 },
+        flag: "https://flagcdn.com/w20/vn.png",
+        duration: "6 Years",
+        fees: "₹1.6 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Can Tho University",
+        location: "Can Tho, Vietnam",
+        coordinates: { lat: 10.0444, lng: 105.7528 },
+        flag: "https://flagcdn.com/w20/vn.png",
+        duration: "6 Years",
+        fees: "₹1.5 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Ho Chi Minh City University",
+        location: "Ho Chi Minh City, Vietnam",
+        coordinates: { lat: 10.8231, lng: 106.6297 },
+        flag: "https://flagcdn.com/w20/vn.png",
+        duration: "6 Years",
+        fees: "₹1.6 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      {
+        name: "Hanoi Medical University",
+        location: "Hanoi, Vietnam",
+        coordinates: { lat: 21.0285, lng: 105.8542 },
+        flag: "https://flagcdn.com/w20/vn.png",
+        duration: "6 Years",
+        fees: "₹1.5 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["WHO & MCI Approved", "English Medium", "Low Cost of Living", "Modern Infrastructure", "Cultural Similarities"]
+      },
+      // KAZAKHSTAN
+      {
+        name: "Kazakh National Medical University",
+        location: "Almaty, Kazakhstan",
+        coordinates: { lat: 43.2567, lng: 76.9289 },
+        flag: "https://flagcdn.com/w20/kz.png",
+        duration: "5 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "West Kazakhstan Marat Ospanov State Medical University",
+        location: "Aktobe, Kazakhstan",
+        coordinates: { lat: 50.2917, lng: 57.1583 },
+        flag: "https://flagcdn.com/w20/kz.png",
+        duration: "5 Years",
+        fees: "₹1.8 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      },
+      {
+        name: "Al-Farabi Kazakh National University",
+        location: "Almaty, Kazakhstan",
+        coordinates: { lat: 43.2567, lng: 76.9289 },
+        flag: "https://flagcdn.com/w20/kz.png",
+        duration: "6 Years",
+        fees: "₹2.0 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["Globally Recognized Degrees", "Advanced Infrastructure", "European Standard Education", "High Quality Training", "Affordable Living Costs"]
+      },
+      // TAJIKISTAN
+      {
+        name: "Tajik National University",
+        location: "Dushanbe, Tajikistan",
+        coordinates: { lat: 38.5650, lng: 68.7800 },
+        flag: "https://flagcdn.com/w20/tj.png",
+        duration: "5 Years",
+        fees: "₹1.5 Lakh/Semester",
+        eligibility: "50% in PCB, NEET Qualified",
+        benefits: ["5-Year Direct MD Program", "Low Tuition Fees", "Modern Facilities", "MCI Approved", "English Medium"]
+      }
+    ];
 
-        // Three.js variables
-        let scene, camera, renderer, earth, controls;
-        const markers = [];
-        let raycaster = new THREE.Raycaster();
-        let mouse = new THREE.Vector2();
-        let activeCountry = null;
+    let scene, camera, renderer, earth, controls;
+    const markers = [];
+    let raycaster = new THREE.Raycaster();
+    let mouse = new THREE.Vector2();
+    let activeCountry = null;
+    let countrySelectorVisible = false;
 
-        // Initialize the 3D Earth
-        function init() {
-            // Create scene
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x000000);
-
-            // Create camera
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 2;
-
-            // Create renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('earth-container').appendChild(renderer.domElement);
-
-            // Add controls
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.05;
-            controls.minDistance = 1.5;
-            controls.maxDistance = 5;
-            controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.5;
-
-            // Add ambient light
-            const ambientLight = new THREE.AmbientLight(0x404040);
-            scene.add(ambientLight);
-
-            // Add directional light
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
-
-            // Create Earth
-            const geometry = new THREE.SphereGeometry(1, 64, 64);
-            const textureLoader = new THREE.TextureLoader();
-            const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-            const bumpMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg');
-            const specularMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg');
-            
-            const material = new THREE.MeshPhongMaterial({
-                map: earthTexture,
-                bumpMap: bumpMap,
-                bumpScale: 0.05,
-                specularMap: specularMap,
-                specular: new THREE.Color('grey'),
-                shininess: 5
-            });
-            
-            earth = new THREE.Mesh(geometry, material);
-            scene.add(earth);
-
-            // Add stars
-            addStars();
-
-            // Add markers for colleges
-            addCollegeMarkers();
-
-            // Create country selector buttons
-            createCountrySelector();
-
-            // Hide loading screen
+    function init() {
+      try {
+        // Update stats
+        document.getElementById('total-colleges').textContent = colleges.length;
+        const countries = [...new Set(colleges.map(c => c.location.split(', ')[1]))];
+        document.getElementById('total-countries').textContent = countries.length;
+        
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0f172a);
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 2;
+        
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('earth-container').appendChild(renderer.domElement);
+        
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 1.5;
+        controls.maxDistance = 5;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+        
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(1, 1, 1);
+        scene.add(directionalLight);
+        
+        // Earth
+        const geometry = new THREE.SphereGeometry(1, 64, 64);
+        const textureLoader = new THREE.TextureLoader();
+        const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
+        const bumpMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg');
+        const specularMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg');
+        
+        const material = new THREE.MeshPhongMaterial({
+          map: earthTexture,
+          bumpMap: bumpMap,
+          bumpScale: 0.05,
+          specularMap: specularMap,
+          specular: new THREE.Color('grey'),
+          shininess: 5
+        });
+        
+        earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+        
+        // Add elements
+        addStars();
+        addCollegeMarkers();
+        createCountrySelector();
+        
+        // Hide loading screen
+        setTimeout(() => {
+          document.getElementById('loading').style.opacity = 0;
+          setTimeout(() => {
             document.getElementById('loading').style.display = 'none';
-
-            // Add event listeners
-            window.addEventListener('resize', onWindowResize);
-            renderer.domElement.addEventListener('click', onCanvasClick);
-            document.getElementById('close-info').addEventListener('click', () => {
-                document.getElementById('info-panel').style.display = 'none';
-            });
-            document.getElementById('search-btn').addEventListener('click', searchCollege);
-            document.getElementById('search-input').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') searchCollege();
-            });
-
-            // Start animation loop
-            animate();
+          }, 300);
+        }, 1000);
+        
+        // Event listeners
+        window.addEventListener('resize', onWindowResize);
+        renderer.domElement.addEventListener('click', onCanvasClick);
+        document.getElementById('close-info').addEventListener('click', () => {
+          document.getElementById('info-panel').classList.remove('show');
+        });
+        
+        document.getElementById('search-btn').addEventListener('click', searchCollege);
+        document.getElementById('search-input').addEventListener('input', handleSearchInput);
+        document.getElementById('search-input').addEventListener('keypress', e => {
+          if (e.key === 'Enter') searchCollege();
+        });
+        
+        document.getElementById('toggle-country').addEventListener('click', toggleCountrySelector);
+        
+        animate();
+      } catch (error) {
+        console.error("Initialization failed:", error);
+        document.getElementById('loading').innerHTML = `
+          <div class="text-center">
+            <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-4"></i>
+            <p class="text-xl">Error loading 3D Earth</p>
+            <p class="text-sm text-gray-400 mt-2">Please check your internet connection and try again</p>
+            <button onclick="window.location.reload()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+              <i class="fas fa-sync-alt mr-2"></i> Reload
+            </button>
+          </div>
+        `;
+      }
+    }
+    
+    function addStars() {
+      const starsGeometry = new THREE.BufferGeometry();
+      const starsMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.02,
+        transparent: true,
+        opacity: 0.8
+      });
+      
+      const starsVertices = [];
+      for (let i = 0; i < 10000; i++) {
+        const x = (Math.random() - 0.5) * 2000;
+        const y = (Math.random() - 0.5) * 2000;
+        const z = (Math.random() - 0.5) * 2000;
+        starsVertices.push(x, y, z);
+      }
+      
+      starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+      const stars = new THREE.Points(starsGeometry, starsMaterial);
+      scene.add(stars);
+    }
+    
+    function createCountrySelector() {
+      const container = document.getElementById('country-buttons');
+      const countries = [...new Set(colleges.map(c => c.location.split(', ')[1]))];
+      
+      const allBtn = document.createElement('div');
+      allBtn.className = 'country-btn active';
+      allBtn.innerHTML = '<i class="fas fa-globe mr-2"></i> All Countries';
+      allBtn.addEventListener('click', () => {
+        document.querySelectorAll('.country-btn').forEach(btn => btn.classList.remove('active'));
+        allBtn.classList.add('active');
+        activeCountry = null;
+        updateMarkerVisibility();
+        document.getElementById('selected-country').textContent = 'All';
+      });
+      container.appendChild(allBtn);
+      
+      countries.forEach(country => {
+        const college = colleges.find(c => c.location.includes(country));
+        const btn = document.createElement('div');
+        btn.className = 'country-btn';
+        btn.innerHTML = `<img src="${college.flag}" class="flag-icon"> ${country}`;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.country-btn').forEach(btn => btn.classList.remove('active'));
+          btn.classList.add('active');
+          activeCountry = country;
+          updateMarkerVisibility();
+          document.getElementById('selected-country').textContent = country;
+          
+          // Find first college in this country and focus on it
+          const collegeInCountry = colleges.find(c => c.location.includes(country));
+          if (collegeInCountry) {
+            showCollegeInfo(collegeInCountry);
+            focusOnCountry(collegeInCountry.coordinates);
+          }
+        });
+        container.appendChild(btn);
+      });
+    }
+    
+    function focusOnCountry(coords) {
+      const phi = (90 - coords.lat) * (Math.PI / 180);
+      const theta = (coords.lng + 180) * (Math.PI / 180);
+      
+      controls.autoRotate = false;
+      controls.target.set(
+        -Math.sin(phi) * Math.cos(theta) * 1.02,
+        Math.cos(phi) * 1.02,
+        Math.sin(phi) * Math.sin(theta) * 1.02
+      );
+    }
+    
+    function updateMarkerVisibility() {
+      markers.forEach(marker => {
+        const college = marker.userData;
+        const shouldShow = !activeCountry || college.location.includes(activeCountry);
+        marker.visible = shouldShow;
+        if (marker.htmlMarker) {
+          marker.htmlMarker.style.display = shouldShow ? 'block' : 'none';
         }
-
-        // Add stars to the scene
-        function addStars() {
-            const starsGeometry = new THREE.BufferGeometry();
-            const starsMaterial = new THREE.PointsMaterial({
-                color: 0xffffff,
-                size: 0.02,
-                transparent: true
-            });
-
-            const starsVertices = [];
-            for (let i = 0; i < 10000; i++) {
-                const x = (Math.random() - 0.5) * 2000;
-                const y = (Math.random() - 0.5) * 2000;
-                const z = (Math.random() - 0.5) * 2000;
-                starsVertices.push(x, y, z);
+      });
+    }
+    
+    function addCollegeMarkers() {
+      colleges.forEach(college => {
+        const phi = (90 - college.coordinates.lat) * (Math.PI / 180);
+        const theta = (college.coordinates.lng + 180) * (Math.PI / 180);
+        const x = -Math.sin(phi) * Math.cos(theta);
+        const y = Math.cos(phi);
+        const z = Math.sin(phi) * Math.sin(theta);
+        
+        // 3D Marker
+        const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
+        const markerMaterial = new THREE.MeshBasicMaterial({ 
+          color: 0x3B82F6, 
+          transparent: true, 
+          opacity: 0.8 
+        });
+        const markerMesh = new THREE.Mesh(markerGeometry, markerMaterial);
+        markerMesh.position.set(x * 1.02, y * 1.02, z * 1.02);
+        markerMesh.userData = college;
+        scene.add(markerMesh);
+        markers.push(markerMesh);
+        
+        // HTML Marker
+        const htmlMarker = document.createElement('div');
+        htmlMarker.className = 'marker';
+        htmlMarker.dataset.college = college.name;
+        document.getElementById('earth-container').appendChild(htmlMarker);
+        
+        // Tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = college.name;
+        htmlMarker.appendChild(tooltip);
+        
+        // Update position function
+        htmlMarker.updatePosition = function() {
+          const vector = new THREE.Vector3(
+            markerMesh.position.x,
+            markerMesh.position.y,
+            markerMesh.position.z
+          );
+          vector.project(camera);
+          
+          const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
+          const y = (-(vector.y * 0.5) + 0.5) * window.innerHeight;
+          
+          htmlMarker.style.left = x + 'px';
+          htmlMarker.style.top = y + 'px';
+          
+          // Only show if marker is on the visible side of the earth
+          const cameraDirection = new THREE.Vector3();
+          camera.getWorldDirection(cameraDirection);
+          const markerDirection = markerMesh.position.clone().normalize();
+          const dotProduct = cameraDirection.dot(markerDirection);
+          
+          htmlMarker.style.display = dotProduct > 0 && 
+                                    x >= 0 && y >= 0 && 
+                                    x <= window.innerWidth && 
+                                    y <= window.innerHeight ? 'block' : 'none';
+        };
+        
+        // Click event
+        htmlMarker.addEventListener('click', e => {
+          e.stopPropagation();
+          showCollegeInfo(college);
+        });
+        
+        markerMesh.htmlMarker = htmlMarker;
+      });
+    }
+    
+    function showCollegeInfo(college) {
+      const infoPanel = document.getElementById('info-panel');
+      const collegeInfo = document.getElementById('college-info');
+      
+      collegeInfo.innerHTML = `
+        <div class="college-name flex items-center">
+          <img src="${college.flag}" class="flag-icon mr-2">${college.name}
+        </div>
+        <div class="college-location">
+          <i class="fas fa-map-marker-alt mr-2"></i> ${college.location}
+        </div>
+        <div class="college-card">
+          <div class="college-detail">
+            <span class="detail-label">Duration:</span> ${college.duration}
+          </div>
+          <div class="college-detail">
+            <span class="detail-label">Fees:</span> ${college.fees}
+          </div>
+          <div class="college-detail">
+            <span class="detail-label">Eligibility:</span> ${college.eligibility}
+          </div>
+          <div class="mt-3 font-medium text-blue-300">Key Benefits:</div>
+          <ul class="benefits-list">
+            ${college.benefits.map(benefit => `<li class="benefit-item">${benefit}</li>`).join('')}
+          </ul>
+        </div>
+        <button class="mt-4 w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+          <i class="fas fa-info-circle mr-2"></i> More Details
+        </button>
+      `;
+      
+      infoPanel.classList.add('show');
+      
+      // Focus camera on the college location
+      const phi = (90 - college.coordinates.lat) * (Math.PI / 180);
+      const theta = (college.coordinates.lng + 180) * (Math.PI / 180);
+      
+      controls.autoRotate = false;
+      controls.target.set(
+        -Math.sin(phi) * Math.cos(theta) * 1.02,
+        Math.cos(phi) * 1.02,
+        Math.sin(phi) * Math.sin(theta) * 1.02
+      );
+    }
+    
+    function handleSearchInput() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const resultsContainer = document.getElementById('search-results');
+      
+      if (query.length < 2) {
+        resultsContainer.style.display = 'none';
+        return;
+      }
+      
+      const results = colleges.filter(college => 
+        college.name.toLowerCase().includes(query) || 
+        college.location.toLowerCase().includes(query)
+      );
+      
+      if (results.length > 0) {
+        resultsContainer.innerHTML = results.map(college => `
+          <div class="search-result-item" data-college="${college.name}">
+            <div class="font-medium">${college.name}</div>
+            <div class="text-sm text-gray-600">${college.location}</div>
+          </div>
+        `).join('');
+        
+        resultsContainer.style.display = 'block';
+        
+        // Add click events to result items
+        document.querySelectorAll('.search-result-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const collegeName = item.dataset.college;
+            const college = colleges.find(c => c.name === collegeName);
+            if (college) {
+              showCollegeInfo(college);
+              resultsContainer.style.display = 'none';
             }
-
-            starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
-            const stars = new THREE.Points(starsGeometry, starsMaterial);
-            scene.add(stars);
-        }
-
-        // Create country selector buttons
-        function createCountrySelector() {
-            const container = document.getElementById('country-buttons');
-            const countries = [...new Set(colleges.map(c => c.location.split(', ')[1]))];
-            
-            // Add "All Countries" option
-            const allBtn = document.createElement('div');
-            allBtn.className = 'country-btn active';
-            allBtn.innerHTML = '<i class="fas fa-globe mr-2"></i> All Countries';
-            allBtn.addEventListener('click', () => {
-                document.querySelectorAll('.country-btn').forEach(btn => btn.classList.remove('active'));
-                allBtn.classList.add('active');
-                activeCountry = null;
-                updateMarkerVisibility();
-            });
-            container.appendChild(allBtn);
-            
-            // Add country buttons
-            countries.forEach(country => {
-                const college = colleges.find(c => c.location.includes(country));
-                const btn = document.createElement('div');
-                btn.className = 'country-btn';
-                btn.innerHTML = `<img src="${college.flag}" class="flag-icon"> ${country}`;
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.country-btn').forEach(btn => btn.classList.remove('active'));
-                    btn.classList.add('active');
-                    activeCountry = country;
-                    updateMarkerVisibility();
-                    
-                    // Fly to the country
-                    const collegeInCountry = colleges.find(c => c.location.includes(country));
-                    if (collegeInCountry) {
-                        showCollegeInfo(collegeInCountry);
-                    }
-                });
-                container.appendChild(btn);
-            });
-        }
-
-        // Update marker visibility based on selected country
-        function updateMarkerVisibility() {
-            markers.forEach(marker => {
-                const college = marker.userData;
-                const shouldShow = !activeCountry || college.location.includes(activeCountry);
-                
-                marker.visible = shouldShow;
-                if (marker.htmlMarker) {
-                    marker.htmlMarker.style.display = shouldShow ? 'block' : 'none';
-                }
-            });
-        }
-
-        // Add markers for MBBS colleges
-        function addCollegeMarkers() {
-            colleges.forEach(college => {
-                // Convert lat/lng to 3D position
-                const phi = (90 - college.coordinates.lat) * (Math.PI / 180);
-                const theta = (college.coordinates.lng + 180) * (Math.PI / 180);
-                
-                const x = -Math.sin(phi) * Math.cos(theta);
-                const y = Math.cos(phi);
-                const z = Math.sin(phi) * Math.sin(theta);
-                
-                // Create marker (small sphere)
-                const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
-                const markerMaterial = new THREE.MeshBasicMaterial({ 
-                    color: 0x3B82F6,
-                    transparent: true,
-                    opacity: 0.8
-                });
-                const markerMesh = new THREE.Mesh(markerGeometry, markerMaterial);
-                
-                // Position marker slightly above Earth's surface
-                markerMesh.position.set(x * 1.02, y * 1.02, z * 1.02);
-                
-                // Store college data in marker
-                markerMesh.userData = college;
-                
-                // Add marker to scene
-                scene.add(markerMesh);
-                markers.push(markerMesh);
-                
-                // Create HTML marker (for tooltip)
-                const htmlMarker = document.createElement('div');
-                htmlMarker.className = 'marker';
-                htmlMarker.dataset.college = college.name;
-                document.getElementById('earth-container').appendChild(htmlMarker);
-                
-                // Add tooltip
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = college.name;
-                htmlMarker.appendChild(tooltip);
-                
-                // Update HTML marker position on render
-                htmlMarker.updatePosition = function() {
-                    const vector = new THREE.Vector3(
-                        markerMesh.position.x,
-                        markerMesh.position.y,
-                        markerMesh.position.z
-                    );
-                    vector.project(camera);
-                    
-                    const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
-                    const y = (-(vector.y * 0.5) + 0.5) * window.innerHeight;
-                    
-                    htmlMarker.style.left = x + 'px';
-                    htmlMarker.style.top = y + 'px';
-                    
-                    // Position tooltip above marker
-                    tooltip.style.left = '50%';
-                    tooltip.style.transform = 'translateX(-50%) translateY(-100%) translateY(-10px)';
-                    
-                    // Improved visibility check - only show if facing camera
-                    const cameraDirection = new THREE.Vector3();
-                    camera.getWorldDirection(cameraDirection);
-                    const markerDirection = markerMesh.position.clone().normalize();
-                    const dotProduct = cameraDirection.dot(markerDirection);
-                    
-                    // Only show if the marker is on the front side (dot product > 0)
-                    // Also check if it's within the viewport
-                    const isVisible = dotProduct > 0 && 
-                                     x >= 0 && x <= window.innerWidth && 
-                                     y >= 0 && y <= window.innerHeight;
-                    
-                    htmlMarker.style.display = isVisible ? 'block' : 'none';
-                };
-                
-                // Add click event to HTML marker
-                htmlMarker.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    showCollegeInfo(college);
-                });
-                
-                // Store reference to update position later
-                markerMesh.htmlMarker = htmlMarker;
-            });
-        }
-
-        // Show college information in panel
-        function showCollegeInfo(college) {
-            const infoPanel = document.getElementById('info-panel');
-            const collegeInfo = document.getElementById('college-info');
-            
-            collegeInfo.innerHTML = `
-                <div class="college-name flex items-center">
-                    <img src="${college.flag}" class="flag-icon mr-2">${college.name}
-                </div>
-                <div class="college-location">
-                    <i class="fas fa-map-marker-alt mr-2"></i> ${college.location}
-                </div>
-                
-                <div class="college-card">
-                    <div class="college-detail">
-                        <span class="detail-label">Duration:</span> ${college.duration}
-                    </div>
-                    <div class="college-detail">
-                        <span class="detail-label">Fees:</span> ${college.fees}
-                    </div>
-                    <div class="college-detail">
-                        <span class="detail-label">Eligibility:</span> ${college.eligibility}
-                    </div>
-                    
-                    <div class="mt-3 font-medium text-blue-300">Key Benefits:</div>
-                    <ul class="benefits-list">
-                        ${college.benefits.map(benefit => `<li class="benefit-item">${benefit}</li>`).join('')}
-                    </ul>
-                    
-                    <div class="mt-4">
-                        <a href="${college.website}" target="_blank" class="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 inline-block text-sm">
-                            <i class="fas fa-external-link-alt mr-1"></i> Visit Website
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="mt-3 text-sm text-gray-300">
-                    ${college.info}
-                </div>
-            `;
-            
-            infoPanel.style.display = 'block';
-            
-            // Fly to the college location
-            const phi = (90 - college.coordinates.lat) * (Math.PI / 180);
-            const theta = (college.coordinates.lng + 180) * (Math.PI / 180);
-            
-            controls.autoRotate = false;
-            controls.target.set(
-                -Math.sin(phi) * Math.cos(theta) * 1.02,
-                Math.cos(phi) * 1.02,
-                Math.sin(phi) * Math.sin(theta) * 1.02
-            );
-        }
-
-        // Search for colleges
-        function searchCollege() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            if (!query) return;
-            
-            const found = colleges.find(college => 
-                college.name.toLowerCase().includes(query) || 
-                college.location.toLowerCase().includes(query)
-            );
-            
-            if (found) {
-                showCollegeInfo(found);
-            } else {
-                alert('No MBBS college found with that name or location.');
-            }
-        }
-
-        // Handle canvas click
-        function onCanvasClick(event) {
-            // Calculate mouse position in normalized device coordinates
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-            
-            // Update the raycaster
-            raycaster.setFromCamera(mouse, camera);
-            
-            // Calculate objects intersecting the picking ray
-            const intersects = raycaster.intersectObjects(markers);
-            
-            if (intersects.length > 0) {
-                // Show info for the first intersected marker
-                showCollegeInfo(intersects[0].object.userData);
-            }
-        }
-
-        // Handle window resize
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            controls.update();
-            
-            // Update HTML marker positions
-            markers.forEach(marker => {
-                if (marker.htmlMarker) {
-                    marker.htmlMarker.updatePosition();
-                }
-            });
-            
-            renderer.render(scene, camera);
-        }
-
-        // Start the application
-        init();
-    </script>
+          });
+        });
+      } else {
+        resultsContainer.innerHTML = '<div class="p-4 text-center text-gray-500">No colleges found</div>';
+        resultsContainer.style.display = 'block';
+      }
+    }
+    
+    function searchCollege() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const resultsContainer = document.getElementById('search-results');
+      
+      if (!query) {
+        resultsContainer.style.display = 'none';
+        return;
+      }
+      
+      const found = colleges.find(college => 
+        college.name.toLowerCase().includes(query) || 
+        college.location.toLowerCase().includes(query)
+      );
+      
+      if (found) {
+        showCollegeInfo(found);
+        resultsContainer.style.display = 'none';
+      } else {
+        alert('No MBBS college found with that name or location.');
+      }
+    }
+    
+    function toggleCountrySelector() {
+      countrySelectorVisible = !countrySelectorVisible;
+      const selector = document.getElementById('country-selector');
+      
+      if (countrySelectorVisible) {
+        selector.classList.add('show');
+      } else {
+        selector.classList.remove('show');
+      }
+    }
+    
+    function onCanvasClick(event) {
+      // Only proceed if not clicking on UI elements
+      if (event.target.closest('#search-box, #info-panel, #country-selector, #toggle-country')) {
+        return;
+      }
+      
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(markers);
+      
+      if (intersects.length > 0) {
+        showCollegeInfo(intersects[0].object.userData);
+      } else {
+        // Clicked on empty space - hide info panel
+        document.getElementById('info-panel').classList.remove('show');
+      }
+    }
+    
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+    
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      
+      // Update HTML marker positions
+      markers.forEach(marker => {
+        if (marker.htmlMarker) marker.htmlMarker.updatePosition();
+      });
+      
+      renderer.render(scene, camera);
+    }
+    
+    // Start the application
+    init();
+  </script>
 </body>
 </html>
