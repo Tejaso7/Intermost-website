@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top MBBS Colleges in Vietnam</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top MBBS Universitys in Nepal</title>
+  <script src="https://cdn.tailwindcss.com "></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css "/>
   <style>
+    .hero {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
     .hero video {
       position: absolute;
       top: 0;
@@ -15,114 +26,317 @@
       object-fit: cover;
       z-index: -1;
     }
+    .college-card:hover {
+      transform: translateY(-5px);
+    }
+    .marquee {
+      background: #f8f9fa;
+      color: #0a192f;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 15s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 50;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
   </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0a192f',
+            secondary: '#112240',
+            accent: '#233554',
+            darkblue: '#0a0f1a',
+            lightblue: '#3d5a80'
+          },
+          animation: {
+            'pulse-slow': 'pulse 6s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'wave': 'wave 2s linear infinite',
+            'heartbeat': 'heartbeat 1.5s ease infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            wave: {
+              '0%': { transform: 'rotate(0deg)' },
+              '10%': { transform: 'rotate(14deg)' },
+              '20%': { transform: 'rotate(-8deg)' },
+              '30%': { transform: 'rotate(14deg)' },
+              '40%': { transform: 'rotate(-4deg)' },
+              '50%': { transform: 'rotate(10deg)' },
+              '60%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(0deg)' }
+            },
+            heartbeat: {
+              '0%': { transform: 'scale(1)' },
+              '14%': { transform: 'scale(1.1)' },
+              '28%': { transform: 'scale(1)' },
+              '42%': { transform: 'scale(1.1)' },
+              '70%': { transform: 'scale(1)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+          <!-- Logo and Info -->
+          <div class="flex items-center gap-3 me-4">
+            <div class="relative">
+              <img src="images/logo/logo.png" alt="Intermost Logo" style="height:50px;width:50px;">
+            </div>
+            <div>
+              <h1 class="text-l font-bold text-primary">INTERMOST STUDY ABROAD</h1>
+              <div class="flex flex-wrap gap-1 mt-1">      
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="uzbekistan.html">Uzbekistan</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="georgia.html">Georgia</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="nepal.html">Nepal</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="vietnam.html">Vietnam</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="tezijistan.html">Tajikistan</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="Russia.html">Russia</a></span>
+                <span class="text-xs bg-blue-100 text-primary px-2 py-1 rounded"><a href="kazakistan.html">Kazakhstan</a></span>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex space-x-8">
+            <a href="index#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="index#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="index#news" class="text-primary hover:text-secondary font-medium transition-all">News</a>
+            <a href="index#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Courses</a>
+            <a href="index#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="index#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="index#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="index#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+      
+          <!-- Hamburger Button -->
+          <button id="menu-btn" class="lg:hidden text-primary focus:outline-none">
+            <i class="fas fa-bars text-2xl me-4"></i>
+          </button>
+        </div>
+      
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4 bg-white container mx-auto">
+          <nav class="flex flex-col space-y-2">
+            <a href="index#home" class="text-primary hover:text-secondary font-medium transition-all">Home</a>
+            <a href="index#about" class="text-primary hover:text-secondary font-medium transition-all">About Us</a>
+            <a href="index#news" class="text-primary hover:text-secondary font-medium transition-all">News</a>
+            <a href="index#destinations" class="text-primary hover:text-secondary font-medium transition-all">MBBS Courses</a>
+            <a href="index#why-us" class="text-primary hover:text-secondary font-medium transition-all">Why Choose Us</a>
+            <a href="index#testimonials" class="text-primary hover:text-secondary font-medium transition-all">Testimonials</a>
+            <a href="index#blog" class="text-primary hover:text-secondary font-medium transition-all">Blog</a>
+            <a href="index#contact" class="text-primary hover:text-secondary font-medium transition-all">Contact</a>
+          </nav>
+        </div>
+      </header>
 
-  <!-- 🌏 Hero Section with Video -->
-  <section class="hero relative h-screen flex items-center justify-center text-white text-center bg-black">
+  <!-- Marquee -->
+  <div class="marquee">
+    <span>📢 Opening In India!! — New Office Launch in Agra 🏢 — Welcome India 🇮🇳 — Limited Time Discount on Application Fees — Book Your Free Consultation Today!</span>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
     <video autoplay muted loop>
-      <source src="videos/vietnam-campus.mp4" type="video/mp4">
+      <source src="video/nepal/nepal.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="bg-black bg-opacity-60 p-6 rounded-lg">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Top MBBS Colleges in Vietnam</h1>
-      <p class="text-lg md:text-xl">Explore high-quality, affordable medical education in the heart of Southeast Asia.</p>
+    <div class="bg-black bg-opacity-60 p-6 rounded-lg mx-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Top MBBS Universitys in Nepal</h1>
+      <p class="text-lg md:text-xl mb-6">Affordable medical education with rich cultural experience in the heart of Central Asia.</p>
+  
     </div>
   </section>
 
-  <!-- 🏫 College Cards Section -->
-  <section class="py-12 px-4 max-w-7xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">🏥 Featured MBBS Colleges</h2>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- College 1 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college1.jpg" alt="Hanoi Medical University" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hanoi Medical University</h3>
-          <p class="text-sm text-gray-600 mb-3">One of Vietnam’s oldest and most prestigious institutions, known for world-class faculty and clinical exposure.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$4,000/year</p>
+  <!-- Introduction -->
+  <section id="about" class="py-12 px-4 max-w-6xl mx-auto bg-white rounded-lg shadow-sm mt-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Why Study MBBS in Nepal?</h2>
+    <p class="text-gray-700 leading-relaxed mb-6 text-center">
+      Nepal offers high-quality medical education at affordable costs. With NMC-approved universities, English-medium instruction, and a safe environment, it's an ideal destination for Indian students.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-graduation-cap"></i>
         </div>
+        <h3 class="font-semibold text-gray-800">Globally Recognized</h3>
+        <p class="text-sm text-gray-600 mt-2">NMC and WHO approved degrees</p>
       </div>
-
-      <!-- College 2 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college2.jpg" alt="University of Medicine and Pharmacy, HCMC" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">University of Medicine and Pharmacy, HCMC</h3>
-          <p class="text-sm text-gray-600 mb-3">Located in Ho Chi Minh City, offers MBBS programs in English with international student support.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$4,500/year</p>
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-language"></i>
         </div>
+        <h3 class="font-semibold text-gray-800">English Medium</h3>
+        <p class="text-sm text-gray-600 mt-2">No language barrier for Indian students</p>
       </div>
-
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-money-bill-wave"></i>
         </div>
+        <h3 class="font-semibold text-gray-800">Affordable</h3>
+        <p class="text-sm text-gray-600 mt-2">Low tuition fees compared to India</p>
       </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
+      <div class="bg-blue-50 p-4 rounded-lg text-center">
+        <div class="text-blue-600 text-3xl mb-2">
+          <i class="fas fa-shield-alt"></i>
         </div>
+        <h3 class="font-semibold text-gray-800">Safe Environment</h3>
+        <p class="text-sm text-gray-600 mt-2">Friendly for international students</p>
       </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-      <!-- College 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="images/college3.jpg" alt="Hue University of Medicine and Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hue University of Medicine and Pharmacy</h3>
-          <p class="text-sm text-gray-600 mb-3">Offers a strong MBBS curriculum with emphasis on rural healthcare and hands-on training.</p>
-          <p class="text-sm font-medium text-blue-700">Tuition Fees: ~$3,800/year</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
+ 
+
+
+
+
+
+  <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="rounded">
+                    <img src="images/logo/logo.png" alt="Intermost Logo" style="height:10rem;width:auto;" class="rounded-full shadow-lg">
+
+                        
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Intermost Ventures Study Abroad</h3>
+                    <p class="mb-4">Your trusted partner for global medical education since 2004.</p>
+                    <div class="flex space-x-4">
+                        <a href="http://facebook.com/intermoststudyabr0ad" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/intermoststudyabroad/" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href=" https://wa.me/919058501818" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-whatsapp"></i></a>
+                        <a href="http://www.youtube.com/@IntermostStudyAbroad" class="hover:text-secondary transform hover:scale-110 transition-all"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index#home" class="hover:text-secondary transition-all">Home</a></li>
+                        <li><a href="index#about" class="hover:text-secondary transition-all">About Us</a></li>
+                        <li><a href="index#destinations" class="hover:text-secondary transition-all">MBBS Destinations</a></li>
+                        <li><a href="index#why-us" class="hover:text-secondary transition-all">Why Choose Us</a></li>
+                        <li><a href="index#apply" class="hover:text-secondary transition-all">Apply Now</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Countries</h4>
+                    <ul class="space-y-2">
+                        <li><a href="uzbekistan.html" class="hover:text-secondary transition-all">MBBS in Uzbekistan</a></li>
+                        <li><a href="georgia.html" class="hover:text-secondary transition-all">MBBS in Georgia</a></li>
+                        <li><a href="nepal.html" class="hover:text-secondary transition-all">MBBS in Nepal</a></li>
+                        <li><a href="vietnam.html" class="hover:text-secondary transition-all">MBBS in Vietnam</a></li>
+                        <li><a href="tajikistan.html" class="hover:text-secondary transition-all">MBBS in Tajikistan</a></li>
+                        <li><a href="Russia.html" class="hover:text-secondary transition-all">MBBS in Russia</a></li>
+                        <li><a href="kazakhstan.html" class="hover:text-secondary transition-all">MBBS in Kazakhstan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <p><i class="fas fa-phone-alt mr-2 text-secondary"></i> +91-9058501818</p>
+                        <p><i class="fas fa-envelope mr-2 text-secondary"></i> admissionintermost@gmail.com</p>
+                        <p><i class="fab fa-whatsapp mr-2 text-secondary"></i> WhatsApp: +91-9058501818</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center text-sm">
+                <p>© 2023 Intermost Ventures Study Abroad / Ekam Marketing and Innovation Solutions FZ-LLC, UAE. All Rights Reserved.</p>
+                <div class="mt-2">
+                    <a href="privacy.html" class="hover:text-secondary mr-4 transition-all">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-secondary mr-4 transition-all">Terms of Service</a>
+                    <a href="disclaimer.html" class="hover:text-secondary transition-all">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919058501818 " class="floating-btn bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    // Toggle mobile menu
+    document.getElementById('menu-btn').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Accordion functionality for FAQs
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.classList.remove('transform', 'rotate-180');
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.add('transform', 'rotate-180');
+        }
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
